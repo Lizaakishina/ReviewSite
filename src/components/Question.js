@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
-//import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
+
 const Question = ({ title, info }) => {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <article className='question'>
-      <header>
-        <h4 onClick={() => setExpanded(!expanded)} className='question-title'>
+    <article className='acc'>
+      <header className="acc__header">
+        <h4 className="acc__title" onClick={() => setExpanded(!expanded)}>
           {title}
         </h4>
-        <button className='btn' onClick={() => setExpanded(!expanded)}>
+        <button className='acc__btn' onClick={() => setExpanded(!expanded)}>
         </button>
       </header>
-      {expanded && <p>{info}</p>}
+      {expanded && <p className="acc__text">{info}</p>}
     </article>
   )
 }

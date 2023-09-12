@@ -5,7 +5,12 @@
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__text/header__text.css);
 
-@import url(./blocks/question.css);
+@import url(./blocks/acc/acc.css);
+@import url(./blocks/acc/__btn/acc__bth.css);
+@import url(./blocks/acc/__title/acc__title.css);
+@import url(./blocks/acc/__text/acc__text.css);
+@import url(./blocks/acc/__header/acc__header.css);
+@import url(./blocks/acc/__container/acc__container.css);
 
 @import url(./blocks/footer/footer.css);
 @import url(./blocks/footer/__text/footer__text.css);
