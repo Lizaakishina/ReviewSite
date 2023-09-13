@@ -1,0 +1,9 @@
+.acc__collapse {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s;
+}
+
+.acc__collapse.open {
+  height: auto;
+}

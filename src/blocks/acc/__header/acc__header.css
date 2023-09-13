@@ -1,9 +1,11 @@
 .acc__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.acc__header h4 {
-  margin-bottom: 0;
+  position: relative;
+  width: 100%;
+  padding: 20px 60px 20px 30px;
+  background-color: white;
+  border: 0;
+  border-radius: 7px;
+  font-size: 22px;
+  text-align: center;
+  cursor: pointer;
 }

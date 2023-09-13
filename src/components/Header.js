@@ -3,7 +3,7 @@ const Header = () => {
     <header className="header">
       <p className="header__text">ReviewSite</p>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

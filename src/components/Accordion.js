@@ -1,20 +1,22 @@
 import React, { useState } from 'react'
-import data from '../utils/data'
-import SingleQuestion from './Question'
+import { AccordionItem } from './AccordionItem'
 
-const Accordion = () => {
-  const [questions, setQuestions] = useState(data)
+const Accordion = ({faqList}) => {
+  const [openId, setId] = useState(null);
 
   return (
-    <main>
-      <div className='acc__container'>
-        <section className='info'>
-          {questions.map((question) => (
-            <SingleQuestion key={question.id} {...question} />
-          ))}
-        </section>
-      </div>
-    </main>
+    <ul className="acc">
+      {faqList.map((faqItem, id) => {
+        return (
+          <AccordionItem
+            onClick={() => (id === openId ? setId(null) : setId(id))}
+            faqItem={faqItem}
+            isOpen={id === openId}
+            key={id}
+          />
+        )
+      })}
+    </ul>
   )
 }
 

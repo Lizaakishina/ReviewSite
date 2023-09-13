@@ -1,7 +1,7 @@
 .acc {
-  padding: 1rem 1.5rem;
-  margin-bottom: 1rem;
-  box-shadow: var(--light-shadow);
-  border: 1px solid rgb(174, 174, 174);
+  list-style-type: none;
+  margin: 16px;
+  padding: 16px;
+  background-color: aliceblue;
+  border-radius: 7px;
 }
-
