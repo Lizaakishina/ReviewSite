@@ -1,0 +1,5 @@
+.acc__checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}

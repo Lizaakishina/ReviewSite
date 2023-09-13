@@ -13,7 +13,31 @@ export const AccordionItem = ({faqItem, onClick, isOpen}) => {
           <ArrowIcon className={`acc__arrow ${isOpen ? "active" : ""}`} />
       </button>
       <div className="acc__collapse" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
-        <div className="acc__body" ref={itemRef}>{faqItem.info}</div>
+        <div className="acc__body" ref={itemRef}>
+          <div className="acc__container">
+            <p className="acc__title">Написать</p>
+            <div className="acc__review">
+              <input type="text"></input>
+            </div>
+            <div className="acc__result">
+              <div className="acc__checkbox">
+                <div>
+                  <input className="acc__input" type="radio" id="refact" name="check"></input>
+                  <label for="refact">Надо исправлять</label>
+                </div>
+                <div>
+                  <input className="acc__input" type="radio" id="maybe" name="check"></input>
+                  <label for="maybe">Можно лучше</label>
+                </div>
+                <div>
+                  <input className="acc__input" type="radio" id="cool" name="check"></input>
+                  <label for="cool">Отлично</label>
+                </div>
+              </div>
+              <button className="acc__comment">Комментировать</button>
+            </div>
+          </div>
+        </div>
       </div>
     </li>
     )
