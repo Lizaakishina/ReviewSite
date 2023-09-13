@@ -23,15 +23,15 @@ export const AccordionItem = ({faqItem, onClick, isOpen}) => {
               <div className="acc__checkbox">
                 <div>
                   <input className="acc__input" type="radio" id="refact" name="check"></input>
-                  <label for="refact">Надо исправлять</label>
+                  <label className="acc__label" for="refact">Надо исправлять</label>
                 </div>
                 <div>
                   <input className="acc__input" type="radio" id="maybe" name="check"></input>
-                  <label for="maybe">Можно лучше</label>
+                  <label className="acc__label" for="maybe">Можно лучше</label>
                 </div>
                 <div>
                   <input className="acc__input" type="radio" id="cool" name="check"></input>
-                  <label for="cool">Отлично</label>
+                  <label className="acc__label" for="cool">Отлично</label>
                 </div>
               </div>
               <button className="acc__comment">Комментировать</button>

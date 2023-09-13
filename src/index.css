@@ -17,6 +17,7 @@
 @import url(./blocks/acc/__result/acc__result.css);
 @import url(./blocks/acc/__checkbox/acc__checkbox.css);
 @import url(./blocks/acc/__input/acc__input.css);
+@import url(./blocks/acc/__label/acc__label.css);
 @import url(./blocks/acc/__comment/acc__comment.css);
 
 @import url(./blocks/footer/footer.css);
