@@ -3,3 +3,9 @@
   flex-direction: row;
   justify-content: start;
 }
+
+@media screen and (max-width: 780px) {
+  .acc__checkbox {
+    flex-direction: column;
+  }
+}
