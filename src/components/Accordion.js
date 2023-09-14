@@ -13,6 +13,7 @@ const Accordion = ({faqList}) => {
             faqItem={faqItem}
             isOpen={id === openId}
             key={id}
+            name={id}
           />
         )
       })}
