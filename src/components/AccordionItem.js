@@ -8,7 +8,8 @@ export const AccordionItem = ({faqItem, onClick, isOpen}) => {
     <li className="acc__item">
       <button
         className="acc__header"
-        onClick={() => onClick()}>
+        onClick={() => onClick()}
+      >
           {faqItem.title}
           <ArrowIcon className={`acc__arrow ${isOpen ? "active" : ""}`} />
       </button>
@@ -34,7 +35,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen}) => {
                   <label className="acc__label" for="cool">Отлично</label>
                 </div>
               </div>
-              <button className="acc__comment">Комментировать</button>
+              <button className={`acc__comment`} type="submit" onClick={() => onClick()}>Комментировать</button>
             </div>
           </div>
         </div>
