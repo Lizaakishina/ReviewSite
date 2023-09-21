@@ -8,12 +8,18 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name}) => {
   const [bthStateRed, setBthStateRed] = useState(false);
 
   const handleClickGreen = () => {
+    setBthStateRed(false);
+    setBthStateGrey(false);
     setBthStateGreen(bthStateGreen => !bthStateGreen);
   }
   const handleClickGrey = () => {
-    setBthStateGrey(bthStateGreen => !bthStateGreen);
+    setBthStateGreen(false);
+    setBthStateRed(false);
+    setBthStateGrey(bthStateGrey => !bthStateGrey);
   }
   const handleClickRed = () => {
+    setBthStateGreen(false);
+    setBthStateGrey(false);
     setBthStateRed(bthStateRed => !bthStateRed);
   }
 
