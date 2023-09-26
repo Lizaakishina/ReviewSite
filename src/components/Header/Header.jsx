@@ -13,7 +13,7 @@ const Header = () => {
     <header className="header">
       {loggedIn? <>
           <div className="header__nav header__nav_type_movies">
-            <Link to="/" className="link header__link_type_logo>">
+            <Link to="/" className="link header__link_type_logo">
               <img src={logo} className="header__logo" alt='лого'/>
             </Link>
             <div className="header__flexbox">
@@ -26,7 +26,7 @@ const Header = () => {
                 <img src={chel} className="header__chel" alt='человечек'/>
               </div>
             </div>
-          </div> 
+          </div>
           <PopupMenu />
         </>
        :<>
