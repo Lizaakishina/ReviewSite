@@ -1,25 +1,49 @@
 @import url(./vendor/normalize.css);
-@import url(./fonts/inter.css);
-@import url(./blocks/page/page.css);
+@import url(./vendor/fonts.css);
 
-@import url(./blocks/header/header.css);
-@import url(./blocks/header/__text/header__text.css);
+html {
+  scroll-behavior: smooth;
+}
 
-@import url(./blocks/acc/acc.css);
-@import url(./blocks/acc/__item/acc__item.css);
-@import url(./blocks/acc/__header/acc__header.css);
-@import url(./blocks/acc/__arrow/acc__arrow.css);
-@import url(./blocks/acc/__collapse/acc__collapse.css);
-@import url(./blocks/acc/__body/acc__body.css);
-@import url(./blocks/acc/__container/acc__container.css);
-@import url(./blocks/acc/__title/acc__title.css);
-@import url(./blocks/acc/__review/acc__review.css);
-@import url(./blocks/acc/__result/acc__result.css);
-@import url(./blocks/acc/__checkbox/acc__checkbox.css);
-@import url(./blocks/acc/__choice/acc__choice.css);
-@import url(./blocks/acc/__input/acc__input.css);
-@import url(./blocks/acc/__label/acc__label.css);
-@import url(./blocks/acc/__comment/acc__comment.css);
+body {
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 400;
+  color: #000;
+  max-width: 1280px;
+  height: 100vh;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background-color: #fff;
+}
 
-@import url(./blocks/footer/footer.css);
-@import url(./blocks/footer/__text/footer__text.css);
+.link {
+  text-decoration: none;
+  color: #000;
+  margin: 0;
+  transition: 0.3s;
+}
+
+.link:hover {
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.list {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.button {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background-color: #00000000;
+  transition: 0.3s;
+}
+
+.button:hover {
+  opacity: 0.8;
+  transition: 0.3s;
+}

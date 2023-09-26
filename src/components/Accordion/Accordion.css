@@ -1,0 +1,154 @@
+.acc {
+  list-style-type: none;
+  margin: 16px auto;
+  padding: 16px;
+  background-color: rgb(237, 237, 237);
+  border-radius: 7px;
+  max-width: 880px;
+}
+
+.acc__arrow {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  display: block;
+  width: 30px;
+  height: 17px;
+  transform: translateY(-50%);
+}
+
+.acc__arrow.active {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.acc__body {
+  margin: 0 10px;
+  padding: 10px 20px 10px 10px;
+  border-top: 1px solid rgb(214, 214, 214);
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  font-size: 20px;
+  color: #393939;
+}
+
+.acc__checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+@media screen and (max-width: 780px) {
+  .acc__checkbox {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .acc__choice {
+    margin-bottom: 7px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .acc__choice {
+    margin-bottom: 10px;
+  }
+}
+
+.acc__collapse {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s;
+}
+
+.acc__collapse.open {
+  height: auto;
+}
+
+.acc__comment {
+  background-color: black;
+  color: white;
+  border-radius: 7px;
+  padding: 15px;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 880px) {
+  .acc__comment {
+    height: 60px;
+    font-size: 14px;
+  }
+}
+
+.acc__container {
+  background-color: white;
+  border-radius: 7px;
+}
+
+.acc__header {
+  position: relative;
+  width: 100%;
+  padding: 20px 60px 20px 30px;
+  background-color: white;
+  border: 0;
+  border-radius: 7px;
+  font-size: 20px;
+  text-align: start;
+  cursor: pointer;
+}
+
+.acc__header-red {
+  background-color: rgba(255, 38, 38, 0.749)
+}
+
+.acc__header-grey {
+  background-color: rgba(176, 176, 176, 0.623);
+}
+
+.acc__header-green {
+  background-color: rgba(81, 255, 0, 0.421);
+}
+
+.acc__input {
+  margin-right: 2px;
+}
+
+.acc__item {
+  margin-bottom: 16px;
+  background-color: white;
+  border-radius: 7px;
+}
+
+.acc__label {
+  margin-right: 20px;
+  font-size: 18px;
+}
+
+.acc__result {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px 15px 15px;
+}
+
+@media screen and (max-width: 490px) {
+  .acc__result {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+.acc__review {
+  margin: 10px;
+  min-height: 100px;
+  padding: 15px 15px 5px 15px;
+  border: 1px solid rgb(208, 208, 208);
+  border-radius: 7px;
+}
+
+.acc__title {
+  padding: 15px 15px 5px 5px;
+  margin: 0 10px;
+  font-weight: 500;
+}
