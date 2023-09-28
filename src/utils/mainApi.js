@@ -1,7 +1,7 @@
 import { JWT } from "./constants";
-const BASE_URL = 'https://api.ak1s4.movies-explorer.nomoredomains.icu';
+const BASE_URL = '';
 
-const imageUrl = 'https://api.nomoreparties.co';
+const imageUrl = '';
 
 const checkAnswer = (res) => {
   if(res.ok) {

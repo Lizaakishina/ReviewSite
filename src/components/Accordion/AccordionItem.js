@@ -47,15 +47,15 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name}) => {
               <div className="acc__checkbox">
                 <div className="acc__choice">
                   <input className="acc__input" type="radio" id="refact" name={name} value="red" onClick={handleClickRed}></input>
-                  <label className="acc__label" for="refact">Надо исправлять</label>
+                  <div className="acc__label" for="refact">Надо исправлять</div>
                 </div>
                 <div className="acc__choice">
                   <input className="acc__input" type="radio" id="maybe" name={name} value="grey" onClick={handleClickGrey}></input>
-                  <label className="acc__label" for="maybe">Можно лучше</label>
+                  <div className="acc__label" for="maybe">Можно лучше</div>
                 </div>
                 <div className="acc__choice">
                   <input className="acc__input" type="radio" id="cool" name={name} value="green" onClick={handleClickGreen}></input>
-                  <label className="acc__label" for="cool">Отлично</label>
+                  <div className="acc__label" for="cool">Отлично</div>
                 </div>
               </div>
               <button className={`acc__comment`} type="submit" onClick={() => onClick()}>Комментировать</button>

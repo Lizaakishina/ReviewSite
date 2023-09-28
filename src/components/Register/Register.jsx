@@ -75,7 +75,7 @@ const Register = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactiv
           <span className={`register__errorMessage ${!!errorMessageApi && "register__errorMessage_active"}`}>{errorMessageApi}</span>
           <button className={`button form__button ${!isValid && "form__button_inactive"}`} disabled={!isValid && !isButtonInactive}>
             {isLoader ? "Регистрация" : "Зарегистрироваться"}
-          </button> 
+          </button>
         </form>
         <p className="register__question">Уже зарегистрированы? <Link to="/signin" className="link register__link">Войти</Link></p>
       </section>
