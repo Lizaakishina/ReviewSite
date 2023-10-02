@@ -1,4 +1,4 @@
-import {Link, withRouter} from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Fieldset from "../Fieldset/Fieldset";
 import logo from "../../images/logo.svg";
 import "./Login.css";

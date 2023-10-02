@@ -1,5 +1,5 @@
-import React, {useRef, useState} from 'react'
-import { ReactComponent as ArrowIcon} from '../../images/ArrowIcon.svg'
+import React, { useRef, useState } from 'react'
+import { ReactComponent as ArrowIcon } from '../../images/ArrowIcon.svg'
 
 export const AccordionItem = ({faqItem, onClick, isOpen, name}) => {
   const itemRef = useRef(null);
@@ -65,21 +65,21 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name}) => {
           <div className="acc__container">
             <p className="acc__title">Написать</p>
             <div className="acc__review">
-              <textarea className="acc__textarea" type="text" style={{width: "100%"}}></textarea>
+              <textarea type="text" style={{width: "100%"}}></textarea>
             </div>
             <div className="acc__result">
               <div className="acc__checkbox">
                 <div className="acc__choice" onClick={handleClickRed}>
                   <input className="acc__input" type="radio" id="red" name={name} value="red" checked={checkedRed}></input>
-                  <div className="acc__label" for="red">Надо исправлять</div>
+                  <div className="acc__label">Надо исправлять</div>
                 </div>
                 <div className="acc__choice" onClick={handleClickGrey}>
                   <input className="acc__input" type="radio" id="grey" name={name} value="grey" checked={checkedGrey}></input>
-                  <div className="acc__label" for="grey">Можно лучше</div>
+                  <div className="acc__label">Можно лучше</div>
                 </div>
                 <div className="acc__choice" onClick={handleClickGreen}>
                   <input className="acc__input" type="radio" id="green" name={name} value="green" checked={checkedGreen}></input>
-                  <div className="acc__label" for="green">Отлично</div>
+                  <div className="acc__label">Отлично</div>
                 </div>
               </div>
               <button className={`acc__comment`} type="submit" onClick={() => onClick()}>Комментировать</button>

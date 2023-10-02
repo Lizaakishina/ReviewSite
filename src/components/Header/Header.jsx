@@ -1,8 +1,7 @@
 import "./Header.css";
-import {Link, NavLink} from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import chel from "../../images/chel.svg";
-import PopupMenu from "./PopupMenu/PopupMenu";
 import { memo, useContext } from "react";
 import { LoginContext } from "../../context/LoginContext";
 
@@ -27,9 +26,8 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <PopupMenu />
         </>
-       :<>
+        :<>
           <Link to="/" className="link header__link_type_logo>">
             <img src={logo} className="header__logo" alt='логотип'/>
           </Link>
