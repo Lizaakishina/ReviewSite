@@ -84,6 +84,13 @@
   background-color: rgba(81, 255, 0, 0.421);
 }
 
+textarea {
+  min-height: 80px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  resize: none;
+}
+
 .acc__input {
   margin-right: 2px;
 }

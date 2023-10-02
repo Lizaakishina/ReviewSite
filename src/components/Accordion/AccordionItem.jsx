@@ -41,7 +41,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name}) => {
           <div className="acc__container">
             <p className="acc__title">Написать</p>
             <div className="acc__review">
-              <input type="text"></input>
+              <textarea className="acc__textarea" type="text" style={{width: "100%"}}></textarea>
             </div>
             <div className="acc__result">
               <div className="acc__checkbox">
