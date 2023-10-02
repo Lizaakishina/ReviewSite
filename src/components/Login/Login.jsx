@@ -34,7 +34,7 @@ const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive})
       <Link to="/" className="link login__linkLogo">
         <img src={logo} className="login__logo" alt='логотип' />
       </Link>
-        <h2 className="login__hello">Рады видеть!</h2>
+        <h2 className="login__hello noselect">Рады видеть!</h2>
         <form className="login__form form" onSubmit={handleSubmit} noValidate>
           <Fieldset
             input = "email"
@@ -64,7 +64,7 @@ const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive})
             {isLoader ? "Выполняется вход..." : "Войти"}
           </button>
         </form>
-        <p className="login__ask">Ещё не зарегистрированы? <Link to="/signup" className="link login__link">Регистрация</Link></p>
+        <p className="login__ask noselect">Ещё не зарегистрированы? <Link to="/signup" className="link login__link">Регистрация</Link></p>
       </section>
     </main>
   )

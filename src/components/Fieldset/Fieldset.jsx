@@ -1,10 +1,10 @@
 import "./Fieldset.css";
 
 const Fieldset = ({input, inputClass, placeholder, name, minLength, maxLength, onChange, errors, isValid, pattern}) => {
-  
+
   return (
     <fieldset className="form__fieldset">
-      <legend className="form__legend">{placeholder}</legend>
+      <legend className="form__legend noselect">{placeholder}</legend>
       <input
         type={input}
         name={name}
