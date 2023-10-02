@@ -6,20 +6,44 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name}) => {
   const [bthStateGreen, setBthStateGreen] = useState(false);
   const [bthStateGrey, setBthStateGrey] = useState(false);
   const [bthStateRed, setBthStateRed] = useState(false);
+  const [checkedGreen, setCheckedGreen] = useState(false);
+  const [checkedGrey, setCheckedGrey] = useState(false);
+  const [checkedRed, setCheckedRed] = useState(false);
+
+  const handleCheckGreen =() => {
+    setCheckedRed(false);
+    setCheckedGrey(false);
+    setCheckedGreen(true);
+  }
+
+  const handleCheckGrey =() => {
+    setCheckedRed(false);
+    setCheckedGreen(false);
+    setCheckedGrey(true);
+  }
+
+  const handleCheckRed =() => {
+    setCheckedGrey(false);
+    setCheckedGreen(false);
+    setCheckedRed(true);
+  }
 
   const handleClickGreen = () => {
     setBthStateRed(false);
     setBthStateGrey(false);
+    handleCheckGreen();
     setBthStateGreen(bthStateGreen => !bthStateGreen);
   }
   const handleClickGrey = () => {
     setBthStateGreen(false);
     setBthStateRed(false);
+    handleCheckGrey();
     setBthStateGrey(bthStateGrey => !bthStateGrey);
   }
   const handleClickRed = () => {
     setBthStateGreen(false);
     setBthStateGrey(false);
+    handleCheckRed();
     setBthStateRed(bthStateRed => !bthStateRed);
   }
 
@@ -45,17 +69,17 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name}) => {
             </div>
             <div className="acc__result">
               <div className="acc__checkbox">
-                <div className="acc__choice">
-                  <input className="acc__input" type="radio" id="refact" name={name} value="red" onClick={handleClickRed}></input>
-                  <div className="acc__label" for="refact">Надо исправлять</div>
+                <div className="acc__choice" onClick={handleClickRed}>
+                  <input className="acc__input" type="radio" id="red" name={name} value="red" checked={checkedRed}></input>
+                  <div className="acc__label" for="red">Надо исправлять</div>
                 </div>
-                <div className="acc__choice">
-                  <input className="acc__input" type="radio" id="maybe" name={name} value="grey" onClick={handleClickGrey}></input>
-                  <div className="acc__label" for="maybe">Можно лучше</div>
+                <div className="acc__choice" onClick={handleClickGrey}>
+                  <input className="acc__input" type="radio" id="grey" name={name} value="grey" checked={checkedGrey}></input>
+                  <div className="acc__label" for="grey">Можно лучше</div>
                 </div>
-                <div className="acc__choice">
-                  <input className="acc__input" type="radio" id="cool" name={name} value="green" onClick={handleClickGreen}></input>
-                  <div className="acc__label" for="cool">Отлично</div>
+                <div className="acc__choice" onClick={handleClickGreen}>
+                  <input className="acc__input" type="radio" id="green" name={name} value="green" checked={checkedGreen}></input>
+                  <div className="acc__label" for="green">Отлично</div>
                 </div>
               </div>
               <button className={`acc__comment`} type="submit" onClick={() => onClick()}>Комментировать</button>
@@ -64,5 +88,5 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name}) => {
         </div>
       </div>
     </li>
-    )
+  )
 }
