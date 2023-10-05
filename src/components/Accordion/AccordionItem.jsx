@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { ReactComponent as ArrowIcon } from '../../images/ArrowIcon.svg'
 
-export const AccordionItem = ({faqItem, onClick, isOpen, name}) => {
+export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
   const itemRef = useRef(null);
   const [bthStateGreen, setBthStateGreen] = useState(false);
   const [bthStateGrey, setBthStateGrey] = useState(false);
@@ -9,13 +9,20 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name}) => {
   const [checkedGreen, setCheckedGreen] = useState(false);
   const [checkedGrey, setCheckedGrey] = useState(false);
   const [checkedRed, setCheckedRed] = useState(false);
-  //-----------------------------------------
   const [isEditing, setEditing] = useState(true)
+  const [ isVisible, setIsVisible ] = useState(false);
+  
+  const handleButtonClick = () => {
+    setIsVisible(true);
+    setTimeout(() => {
+      setIsVisible(false);
+    }, 2000);
+  }
+
   const setEditingState = () => {
     setEditing(isEditing => !isEditing)
   }
 
-  //-----------------------------------------
   const handleCheckGreen = () => {
     setCheckedRed(false);
     setCheckedGrey(false);
@@ -61,20 +68,19 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name}) => {
     <li className="acc__item">
       <button
         className={`acc__header ${toggleClassCheckGreen} ${toggleClassCheckGrey} ${toggleClassCheckRed}`}
-        onClick={() => onClick()}
+        onClick={() => {onClick(); handleButtonClick()}}
       >
         {faqItem.title}
         <ArrowIcon className={`acc__arrow ${isOpen ? "active" : ""}`} />
       </button>
-
       <div>
-        {isEditing ? (
+        {isVisible && isEditing ? (
           <div className="acc__collapse" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
             <div className="acc__body" ref={itemRef}>
               <div className="acc__container">
                 <p className="acc__title noselect">Написать</p>
                 <div className="acc__review">
-                  <textarea type="text" style={{width: "100%"}}></textarea>
+                  <span type="text"></span>
                 </div>
                 <div className="acc__change">
                   <button className={`acc__edit noselect`} type="submit" onClick={setEditingState}>Редактировать</button>
@@ -92,7 +98,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name}) => {
               <div className="acc__container">
                 <p className="acc__title noselect">Написать</p>
                 <div className="acc__review">
-                  <textarea type="text" style={{width: "100%"}}></textarea>
+                  <textarea type="text" style={{width: "100%"}} id='notes'></textarea>
                 </div>
                 <div className="acc__result">
                   <div className="acc__checkbox">
