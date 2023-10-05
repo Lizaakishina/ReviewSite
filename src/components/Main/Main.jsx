@@ -47,5 +47,5 @@ const Main = ({loggedIn}) => {
       </>
     )
   }
-  
+
   export default memo(Main);

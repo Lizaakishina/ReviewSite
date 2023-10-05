@@ -11,7 +11,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { JWT, CHECKBOX, REGISTER_ERROR_MESSAGE } from '../../utils/constants';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { LoginContext } from '../../context/LoginContext';
-import { getUser, login, register } from '../../utils/mainApi';
+import { getUser, login, /*register*/ } from '../../utils/mainApi';
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -35,7 +35,7 @@ const App = () => {
     if(loggedIn) {
       handleGetUser(localStorage.getItem(JWT))
     } else {
-      
+
     }
   }, [loggedIn])
 
@@ -43,7 +43,7 @@ const App = () => {
     try {
       setIsLoader(true);
       setIsButtonInactive(true);
-      const res = await register({name, email, password});
+      //const res = await register({name, email, password});
       handleLogin({email, password});
     } catch (error) {
       if (error.statusCode === 400) {
@@ -92,7 +92,7 @@ const App = () => {
       handleSignOut();
       setIsLoaderPage(false);
       console.log(error);
-    } 
+    }
   }
 
   const handleSignOut = () => {
@@ -124,5 +124,5 @@ const App = () => {
       </CurrentUserContext.Provider>)
     )
   }
-  
+
   export default withRouter(App);
