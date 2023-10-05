@@ -35,15 +35,18 @@
 }
 
 .acc__header-red {
-  background-color: rgba(255, 0, 0, 0.3)
+  background-color: rgba(255, 0, 0, 0.3);
+  transition: 0.2s;
 }
 
 .acc__header-grey {
   background-color: rgba(176, 176, 176, 0.3);
+  transition: 0.2s;
 }
 
 .acc__header-green {
   background-color: rgba(81, 255, 0, 0.3);
+  transition: 0.2s;
 }
 
 .acc__arrow {
@@ -108,6 +111,14 @@
   padding: 5px 15px 15px 15px;
 }
 
+.acc__change {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px 15px 15px;
+}
+
 .acc__checkbox {
   display: flex;
   flex-direction: row;
@@ -139,6 +150,53 @@
   font-size: 16px;
 }
 
+.acc__comment:hover {
+  transition: .3s;
+  transform: scale(1.05);
+}
+
+.acc__edit {
+  background-color: black;
+  color: white;
+  border-radius: 7px;
+  padding: 15px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.acc__edit:hover {
+  transition: .3s;
+  transform: scale(1.05);
+}
+
+.acc__send {
+  background-color: #c386df;
+  color: white;
+  border-radius: 7px;
+  padding: 15px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.acc__send:hover {
+  transition: .3s;
+  transform: scale(1.05);
+}
+
+.acc__delete {
+  background-color: rgb(255, 48, 48);
+  color: white;
+  border-radius: 7px;
+  padding: 15px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.acc__delete:hover {
+  transition: .3s;
+  transform: scale(1.05);
+}
+
 textarea {
   min-height: 80px;
   overflow-x: hidden;
@@ -151,6 +209,21 @@ textarea {
     height: 60px;
     font-size: 14px;
   }
+
+  .acc__edit {
+    height: 60px;
+    font-size: 12px;
+  }
+
+  .acc__send {
+    height: 60px;
+    font-size: 12px;
+  }
+
+  .acc__delete {
+    height: 60px;
+    font-size: 12px;
+  }
 }
 
 @media screen and (max-width: 780px) {
@@ -160,6 +233,30 @@ textarea {
 
   .acc__choice {
     margin-bottom: 7px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .acc__change {
+    flex-direction: column;
+  }
+
+  .acc__edit {
+    width: 280px;
+    height: 60px;
+    font-size: 13px;
+  }
+
+  .acc__send {
+    width: 280px;
+    height: 60px;
+    font-size: 13px;
+  }
+
+  .acc__delete {
+    width: 280px;
+    height: 60px;
+    font-size: 13px;
   }
 }
 

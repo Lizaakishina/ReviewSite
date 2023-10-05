@@ -9,20 +9,26 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name}) => {
   const [checkedGreen, setCheckedGreen] = useState(false);
   const [checkedGrey, setCheckedGrey] = useState(false);
   const [checkedRed, setCheckedRed] = useState(false);
+  //-----------------------------------------
+  const [isEditing, setEditing] = useState(true)
+  const setEditingState = () => {
+    setEditing(isEditing => !isEditing)
+  }
 
-  const handleCheckGreen =() => {
+  //-----------------------------------------
+  const handleCheckGreen = () => {
     setCheckedRed(false);
     setCheckedGrey(false);
     setCheckedGreen(true);
   }
 
-  const handleCheckGrey =() => {
+  const handleCheckGrey = () => {
     setCheckedRed(false);
     setCheckedGreen(false);
     setCheckedGrey(true);
   }
 
-  const handleCheckRed =() => {
+  const handleCheckRed = () => {
     setCheckedGrey(false);
     setCheckedGreen(false);
     setCheckedRed(true);
@@ -60,32 +66,55 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name}) => {
         {faqItem.title}
         <ArrowIcon className={`acc__arrow ${isOpen ? "active" : ""}`} />
       </button>
-      <div className="acc__collapse" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
-        <div className="acc__body" ref={itemRef}>
-          <div className="acc__container">
-            <p className="acc__title noselect">Написать</p>
-            <div className="acc__review">
-              <textarea type="text" style={{width: "100%"}}></textarea>
-            </div>
-            <div className="acc__result">
-              <div className="acc__checkbox">
-                <div className="acc__choice" onClick={handleClickRed}>
-                  <input className="acc__input" type="radio" id="red" name={name} value="red" checked={checkedRed}></input>
-                  <div className="acc__label noselect">Надо исправлять</div>
+
+      <div>
+        {isEditing ? (
+          <div className="acc__collapse" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
+            <div className="acc__body" ref={itemRef}>
+              <div className="acc__container">
+                <p className="acc__title noselect">Написать</p>
+                <div className="acc__review">
+                  <textarea type="text" style={{width: "100%"}}></textarea>
                 </div>
-                <div className="acc__choice" onClick={handleClickGrey}>
-                  <input className="acc__input" type="radio" id="grey" name={name} value="grey" checked={checkedGrey}></input>
-                  <div className="acc__label noselect">Можно лучше</div>
-                </div>
-                <div className="acc__choice" onClick={handleClickGreen}>
-                  <input className="acc__input" type="radio" id="green" name={name} value="green" checked={checkedGreen}></input>
-                  <div className="acc__label noselect">Отлично</div>
+                <div className="acc__change">
+                  <button className={`acc__edit noselect`} type="submit" onClick={setEditingState}>Редактировать</button>
+                  <button className={`acc__send noselect`} type="submit">Отправить комментарий</button>
+                  <button className={`acc__delete noselect`} type="submit">Удалить комментарий</button>
                 </div>
               </div>
-              <button className={`acc__comment noselect`} type="submit" onClick={() => onClick()}>Комментировать</button>
             </div>
           </div>
-        </div>
+        )
+        :
+        (
+          <div className="acc__collapse" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
+            <div className="acc__body" ref={itemRef}>
+              <div className="acc__container">
+                <p className="acc__title noselect">Написать</p>
+                <div className="acc__review">
+                  <textarea type="text" style={{width: "100%"}}></textarea>
+                </div>
+                <div className="acc__result">
+                  <div className="acc__checkbox">
+                    <div className="acc__choice" onClick={handleClickRed}>
+                      <input className="acc__input" type="radio" id="red" name={name} value="red" checked={checkedRed}></input>
+                      <div className="acc__label noselect">Надо исправлять</div>
+                    </div>
+                    <div className="acc__choice" onClick={handleClickGrey}>
+                      <input className="acc__input" type="radio" id="grey" name={name} value="grey" checked={checkedGrey}></input>
+                      <div className="acc__label noselect">Можно лучше</div>
+                    </div>
+                    <div className="acc__choice" onClick={handleClickGreen}>
+                      <input className="acc__input" type="radio" id="green" name={name} value="green" checked={checkedGreen}></input>
+                      <div className="acc__label noselect">Отлично</div>
+                    </div>
+                  </div>
+                  <button className={`acc__comment noselect`} type="submit" onClick={() => {onClick(); setEditingState()}}>Комментировать</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </li>
   )
