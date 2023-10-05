@@ -10,13 +10,13 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
   const [checkedGrey, setCheckedGrey] = useState(false);
   const [checkedRed, setCheckedRed] = useState(false);
   const [isEditing, setEditing] = useState(true)
-  const [ isVisible, setIsVisible ] = useState(false);
-  
+  const [isVisible, setIsVisible ] = useState(false);
+
   const handleButtonClick = () => {
     setIsVisible(true);
     setTimeout(() => {
       setIsVisible(false);
-    }, 2000);
+    }, 100);
   }
 
   const setEditingState = () => {
@@ -68,13 +68,13 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
     <li className="acc__item">
       <button
         className={`acc__header ${toggleClassCheckGreen} ${toggleClassCheckGrey} ${toggleClassCheckRed}`}
-        onClick={() => {onClick(); handleButtonClick()}}
+        onClick={() => {onClick()}}
       >
         {faqItem.title}
         <ArrowIcon className={`acc__arrow ${isOpen ? "active" : ""}`} />
       </button>
       <div>
-        {isVisible && isEditing ? (
+        {isEditing ? (
           <div className="acc__collapse" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
             <div className="acc__body" ref={itemRef}>
               <div className="acc__container">
@@ -82,11 +82,12 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
                 <div className="acc__review">
                   <span type="text"></span>
                 </div>
+                {!isVisible &&
                 <div className="acc__change">
                   <button className={`acc__edit noselect`} type="submit" onClick={setEditingState}>Редактировать</button>
                   <button className={`acc__send noselect`} type="submit">Отправить комментарий</button>
                   <button className={`acc__delete noselect`} type="submit">Удалить комментарий</button>
-                </div>
+                </div>}
               </div>
             </div>
           </div>
@@ -115,7 +116,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
                       <div className="acc__label noselect">Отлично</div>
                     </div>
                   </div>
-                  <button className={`acc__comment noselect`} type="submit" onClick={() => {onClick(); setEditingState()}}>Комментировать</button>
+                  <button className={`acc__comment noselect`} type="submit" onClick={() => {onClick(); setEditingState(); handleButtonClick()}}>Комментировать</button>
                 </div>
               </div>
             </div>
