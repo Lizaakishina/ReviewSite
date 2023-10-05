@@ -85,7 +85,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
                 {!isVisible &&
                 <div className="acc__change">
                   <button className={`acc__edit noselect`} type="submit" onClick={setEditingState}>Редактировать</button>
-                  <button className={`acc__send noselect`} type="submit" onClick={() => onClick()}>Отправить комментарий</button>
+                  <button className={`acc__send noselect`} type="submit">Отправить комментарий</button>
                   <button className={`acc__delete noselect`} type="submit">Удалить комментарий</button>
                 </div>}
               </div>
