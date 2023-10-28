@@ -198,10 +198,15 @@
 }
 
 textarea {
+  font-size: 14px;
   min-height: 80px;
   overflow-x: hidden;
   overflow-y: scroll;
   resize: none;
+}
+
+span {
+  font-size: 14px;
 }
 
 @media screen and (max-width: 880px) {

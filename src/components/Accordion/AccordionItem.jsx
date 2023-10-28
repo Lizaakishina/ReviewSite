@@ -11,8 +11,9 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
   const [checkedRed, setCheckedRed] = useState(false);
   const [isEditing, setEditing] = useState(true)
   const [isVisible, setIsVisible ] = useState(false);
+  const [text, setNewText] = useState("");
 
-  const handleButtonClick = () => {
+  const handleTimerClick = () => {
     setIsVisible(true);
     setTimeout(() => {
       setIsVisible(false);
@@ -80,7 +81,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
               <div className="acc__container">
                 <p className="acc__title noselect">Написать</p>
                 <div className="acc__review">
-                  <span type="text"></span>
+                  <span type="text">{text}</span>
                 </div>
                 {!isVisible &&
                 <div className="acc__change">
@@ -99,7 +100,13 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
               <div className="acc__container">
                 <p className="acc__title noselect">Написать</p>
                 <div className="acc__review">
-                  <textarea type="text" style={{width: "100%"}} id='notes'></textarea>
+                  <textarea type="text" style={{width: "100%"}} id='notes'
+                    value={text}
+                    onChange={(e) => {
+                      const newText = e.target.value;
+                      setNewText(newText);
+                    }}>
+                  </textarea>
                 </div>
                 <div className="acc__result">
                   <div className="acc__checkbox">
@@ -116,7 +123,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
                       <div className="acc__label noselect">Отлично</div>
                     </div>
                   </div>
-                  <button className={`acc__comment noselect`} type="submit" onClick={() => {onClick(); setEditingState(); handleButtonClick()}}>Комментировать</button>
+                  <button className={`acc__comment noselect`} type="submit" onClick={() => {onClick(); handleTimerClick(); setEditingState()}}>Комментировать</button>
                 </div>
               </div>
             </div>
