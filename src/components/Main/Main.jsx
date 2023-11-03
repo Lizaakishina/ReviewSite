@@ -1,5 +1,6 @@
 import Header from '../Header/Header';
 import Accordion from '../Accordion/Accordion';
+import Profile from '../Profile/Profile';
 import Footer from '../Footer/Footer';
 import { memo } from 'react';
 
@@ -42,11 +43,12 @@ const faqList = [
   },
 ]
 
-const Main = ({loggedIn}) => {
+const Main = ({loggedIn}, props) => {
     return (
       <>
         <Header loggedIn={loggedIn}/>
         <main>
+          <Profile />
           <Accordion faqList={faqList}/>
         </main>
         <Footer />
