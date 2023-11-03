@@ -32,7 +32,7 @@ const Register = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactiv
   return (
     <main>
       <section className="register">
-        <Link to="/" className="link register__linkLogo">
+        <Link to="/profile" className="link register__linkLogo">
           <img src={logo} className="register__logo" alt='логотип' />
         </Link>
         <h2 className="register__hello noselect">Добро пожаловать!</h2>

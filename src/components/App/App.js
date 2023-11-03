@@ -11,7 +11,8 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { JWT, CHECKBOX, REGISTER_ERROR_MESSAGE } from '../../utils/constants';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { LoginContext } from '../../context/LoginContext';
-import { getUser, login, /*register*/ } from '../../utils/mainApi';
+import { getUser, login, register } from '../../utils/mainApi';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -108,6 +109,9 @@ const App = () => {
         <LoginContext.Provider value={loggedIn}>
           <Switch>
             <Route exact path="/">
+              <Redirect to="/signin" />
+            </Route>
+            <Route exact path="/profile">
               <Main />
             </Route>
             <Route path="/signup">
