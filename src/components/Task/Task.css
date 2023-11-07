@@ -10,6 +10,11 @@
   justify-content: space-between;
 }
 
+.task:hover {
+  transition: .3s;
+  box-shadow: 6px 6px 0px #d7d7d7;
+}
+
 .task__box {
   width: 25px;
   height: 25px;
