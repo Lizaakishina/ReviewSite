@@ -1,5 +1,5 @@
-import "./PageNotFound.css";
-import { withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
+import './PageNotFound.css';
 
 const PageNotFound = ({history}) => {
   const handleClick = () => {
@@ -17,4 +17,4 @@ const PageNotFound = ({history}) => {
   )
 }
 
-export default withRouter(PageNotFound);
+export default withRouter(PageNotFound)

@@ -1,8 +1,8 @@
-import "./Header.css";
-import { Link, NavLink } from "react-router-dom";
-import chel from "../../images/chel.svg";
-import { memo, useContext } from "react";
-import { LoginContext } from "../../context/LoginContext";
+import { memo, useContext } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { LoginContext } from '../../context/LoginContext';
+import chel from '../../images/chel.svg';
+import './Header.css';
 
 const Header = () => {
   const loggedIn = useContext(LoginContext);
@@ -30,4 +30,4 @@ const Header = () => {
   )
 }
 
-export default memo(Header);
+export default memo(Header)

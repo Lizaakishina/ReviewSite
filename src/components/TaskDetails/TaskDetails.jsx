@@ -1,8 +1,8 @@
 import React from 'react';
-import Accordion from '../Accordion/Accordion';
 import { Link } from 'react-router-dom';
-import logo from "../../images/logo.svg";
-import "./TaskDetails.css";
+import Accordion from '../Accordion/Accordion';
+import logo from '../../images/logo.svg';
+import './TaskDetails.css';
 
 const faqList = [
   {
@@ -56,4 +56,4 @@ const TaskDetails = () => {
   )
 }
 
-export default TaskDetails;
+export default TaskDetails

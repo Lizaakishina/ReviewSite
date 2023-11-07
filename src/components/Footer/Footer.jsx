@@ -1,5 +1,5 @@
-import "./Footer.css";
-import { memo } from "react";
+import { memo } from 'react';
+import './Footer.css';
 
 const Footer = () => {
   return (
@@ -16,4 +16,4 @@ const Footer = () => {
   )
 }
 
-export default memo(Footer);
+export default memo(Footer)

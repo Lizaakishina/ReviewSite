@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react'
-import { ReactComponent as ArrowIcon } from '../../images/ArrowIcon.svg'
+import React, { useRef, useState } from 'react';
+import { ReactComponent as ArrowIcon } from '../../images/ArrowIcon.svg';
 
 export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
   const itemRef = useRef(null);

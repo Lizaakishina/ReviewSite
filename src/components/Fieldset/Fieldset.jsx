@@ -1,4 +1,4 @@
-import "./Fieldset.css";
+import './Fieldset.css';
 
 const Fieldset = ({input, inputClass, placeholder, name, minLength, maxLength, onChange, errors, isValid, pattern}) => {
 
@@ -20,4 +20,4 @@ const Fieldset = ({input, inputClass, placeholder, name, minLength, maxLength, o
   )
 }
 
-export default Fieldset;
+export default Fieldset

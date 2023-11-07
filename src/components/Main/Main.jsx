@@ -1,7 +1,7 @@
+import { memo } from 'react';
 import Header from '../Header/Header';
 import Profile from '../Profile/Profile';
 import Footer from '../Footer/Footer';
-import { memo } from 'react';
 
 const Main = ({loggedIn}) => {
     return (
@@ -15,4 +15,4 @@ const Main = ({loggedIn}) => {
     )
   }
 
-  export default memo(Main);
+  export default memo(Main)

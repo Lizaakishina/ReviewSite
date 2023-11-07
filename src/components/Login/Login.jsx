@@ -1,11 +1,11 @@
-import { Link, withRouter } from "react-router-dom";
-import Fieldset from "../Fieldset/Fieldset";
-import logo from "../../images/logo.svg";
-import "./Login.css";
-import { useValidation } from "../../hook/useValidation";
-import { useCallback, useContext, useEffect } from "react";
-import { LoginContext } from "../../context/LoginContext";
-import { EMAIL_PATTERN } from "../../utils/constants";
+import { useCallback, useContext, useEffect } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { useValidation } from '../../hook/useValidation';
+import { LoginContext } from '../../context/LoginContext';
+import { EMAIL_PATTERN } from '../../utils/constants';
+import Fieldset from '../Fieldset/Fieldset';
+import logo from '../../images/logo.svg';
+import './Login.css';
 
 const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive}) => {
   const { values, handleChange, errors, isValid, resetForm } = useValidation();
@@ -70,4 +70,4 @@ const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive})
   )
 }
 
-export default withRouter(Login);
+export default withRouter(Login)

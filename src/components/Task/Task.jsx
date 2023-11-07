@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import "./Task.css";
+import './Task.css';
 
 const Task = ({ id, title }) => {
   return (
@@ -12,4 +12,4 @@ const Task = ({ id, title }) => {
   )
 }
 
-export default Task;
+export default Task

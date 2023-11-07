@@ -2,13 +2,13 @@
 import Main from '../Main/Main';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
-import SubjectDetails from '../SubjectDetails/SubjectDetails.jsx';
-import TaskDetails from '../TaskDetails/TaskDetails.jsx';
+import SubjectDetails from '../SubjectDetails/SubjectDetails';
+import TaskDetails from '../TaskDetails/TaskDetails';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Preloader from '../Preloader/Preloader';
 //реакт
 import { useEffect, useState } from 'react';
-import { Switch, Route, withRouter, Link } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 //контексты и утилиты
 import { JWT, CHECKBOX, REGISTER_ERROR_MESSAGE } from '../../utils/constants';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
@@ -139,4 +139,4 @@ const App = () => {
     )
   }
 
-  export default withRouter(App);
+export default withRouter(App)

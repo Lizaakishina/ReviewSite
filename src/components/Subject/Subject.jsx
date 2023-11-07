@@ -13,4 +13,4 @@ function Subject({ id, title }) {
   )
 }
 
-export default Subject;
+export default Subject

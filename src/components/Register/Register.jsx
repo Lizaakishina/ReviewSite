@@ -1,11 +1,11 @@
-import {Link, withRouter} from "react-router-dom";
-import Fieldset from "../Fieldset/Fieldset";
-import logo from "../../images/logo.svg";
-import "./Register.css";
-import { useValidation } from "../../hook/useValidation";
-import { LoginContext } from "../../context/LoginContext";
-import { useCallback, useContext, useEffect } from "react";
-import { EMAIL_PATTERN } from "../../utils/constants";
+import { useCallback, useContext, useEffect } from 'react';
+import { Link, withRouter} from 'react-router-dom';
+import { useValidation } from '../../hook/useValidation';
+import { LoginContext } from '../../context/LoginContext';
+import { EMAIL_PATTERN } from '../../utils/constants';
+import Fieldset from '../Fieldset/Fieldset';
+import logo from '../../images/logo.svg';
+import './Register.css';
 
 const Register = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive}) => {
   const { values, handleChange, errors, isValid, resetForm } = useValidation();
@@ -83,4 +83,4 @@ const Register = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactiv
   )
 }
 
-export default withRouter(Register);
+export default withRouter(Register)

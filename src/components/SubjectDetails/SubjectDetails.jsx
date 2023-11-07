@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from "../../images/logo.svg";
-import Task from "../Task/Task.jsx";
-import "./SubjectDetails.css";
+import Task from '../Task/Task';
+import logo from '../../images/logo.svg';
+import './SubjectDetails.css';
 
 const TaskData = [
   {
@@ -44,4 +44,4 @@ const SubjectDetails = () => {
   )
 }
 
-export default SubjectDetails;
+export default SubjectDetails

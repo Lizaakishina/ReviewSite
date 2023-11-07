@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { AccordionItem } from './AccordionItem'
-import "./Accordion.css"
+import React, { useState } from 'react';
+import { AccordionItem } from './AccordionItem';
+import './Accordion.css';
 
 const Accordion = ({faqList}) => {
   const [openId, setId] = useState(null);

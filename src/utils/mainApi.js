@@ -1,4 +1,4 @@
-import { JWT } from "./constants";
+import { JWT } from './constants';
 const BASE_URL = '';
 
 const imageUrl = '';
