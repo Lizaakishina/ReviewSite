@@ -1,0 +1,43 @@
+.decor1 {
+  z-index: -2;
+  position: absolute;
+  bottom: 148px;
+  left: -275px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+.decor2 {
+  z-index: -3;
+  position: absolute;
+  left: -300px;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background-color: #c691f0;
+  opacity: .8;
+}
+
+.decor3 {
+  z-index: -3;
+  position: absolute;
+  right: -100px;
+  width: 250px;
+  height: 250px;
+  background-color: #c691f0;
+  opacity: .8;
+  transform: rotate(-45deg);
+}
+
+.decor4 {
+  z-index: -3;
+  position: absolute;
+  bottom: 350px;
+  right: -70px;
+  width: 190px;
+  height: 190px;
+  background-color: #ffffff;
+  transform: rotate(-45deg);
+}
