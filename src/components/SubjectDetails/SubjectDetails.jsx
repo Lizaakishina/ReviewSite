@@ -4,6 +4,25 @@ import logo from "../../images/logo.svg";
 import Task from "../Task/Task.jsx";
 import "./SubjectDetails.css";
 
+const TaskData = [
+  {
+    id: 1,
+    title: "Лабораторная работа №1",
+  },
+  {
+    id: 2,
+    title: "Лабораторная работа №2",
+  },
+  {
+    id: 3,
+    title: "Лабораторная работа №3",
+  },
+  {
+    id: 4,
+    title: "Домашняя работа №1",
+  },
+]
+
 const SubjectDetails = () => {
   return (
     <section className="subjectDetails">
@@ -13,7 +32,13 @@ const SubjectDetails = () => {
         <p className="subjectDetails__text">Назад</p>
       </Link>
       <div>
-        <Task />
+      {TaskData.map((subject) => (
+        <Task
+          key={subject.id}
+          id={subject.id}
+          title={subject.title}
+        />
+      ))}
       </div>
     </section>
   )

@@ -3,6 +3,7 @@ import Main from '../Main/Main';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import SubjectDetails from '../SubjectDetails/SubjectDetails.jsx';
+import TaskDetails from '../TaskDetails/TaskDetails.jsx';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Preloader from '../Preloader/Preloader';
 //реакт
@@ -123,6 +124,10 @@ const App = () => {
             </Route>
             <Route path="/subject/:id" render={() =>
               <SubjectDetails />
+            }>
+            </Route>
+            <Route path="/task/:id" render={() =>
+              <TaskDetails />
             }>
             </Route>
             <Route path="*">
