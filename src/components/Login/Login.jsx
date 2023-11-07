@@ -60,7 +60,7 @@ const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive})
             isValid={isValid}
           />
           <span className={`login__errorMessage ${!!errorMessageApi && "login__errorMessage_active"}`}>{errorMessageApi}</span>
-          <button className={`button form__button ${!isValid && "form__button_inactive"}`} disabled={!isValid && !isButtonInactive}>
+          <button className={`form__button ${!isValid && "form__button_inactive"}`} disabled={!isValid && !isButtonInactive}>
             {isLoader ? "Выполняется вход..." : "Войти"}
           </button>
         </form>
