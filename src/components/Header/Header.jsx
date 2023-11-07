@@ -1,6 +1,5 @@
 import "./Header.css";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../images/logo.svg";
 import chel from "../../images/chel.svg";
 import { memo, useContext } from "react";
 import { LoginContext } from "../../context/LoginContext";
@@ -11,11 +10,7 @@ const Header = () => {
   return (
     <header className="header">
       {loggedIn? <>
-          <div className="header__nav header__nav_type_movies">
-            <div className="header__flexbox">
-              <NavLink to="/movies" className="link header__navLink" activeClassName="header__navLink_active">Фильмы</NavLink>
-              <NavLink to="/saved-movies" className="link header__navLink" activeClassName="header__navLink_active">Сохранённые фильмы</NavLink>
-            </div>
+          <div className="header__nav">
             <div className="header__nav header__nav_type_acс">
               <NavLink to="/profile" className="link header__link_type_acc">Аккаунт</NavLink>
               <div className="header__chelbox">

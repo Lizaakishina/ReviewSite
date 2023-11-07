@@ -25,38 +25,12 @@
   border-radius: 3px;
 }
 
-.header__link_type_logo {
-  width: 38px;
-  height: 38px;
-}
-
 .header__link_type_acc {
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
   display: flex;
   align-items: center;
-}
-
-.header__nav_type_movies {
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header__flexbox {
-  display: flex;
-  gap: 16px;
-}
-
-.header__navLink {
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-.header__navLink_active {
-  font-weight: 500;
 }
 
 .header__chelbox {
@@ -74,27 +48,12 @@
   height: 14px;
 }
 
-.header__navLink_type_profile {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  width: 100px;
-  padding: 8px 0;
-  background: #f9f9f9;
-  border-radius: 20px;
-  text-align: center;
-}
-
 @media screen and (max-width: 780px) {
   .header {
     padding: 0 30px;
   }
 
   .header__nav_type_acс {
-    display: none;
-  }
-
-  .header__flexbox {
     display: none;
   }
 }

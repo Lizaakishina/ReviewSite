@@ -1,29 +1,39 @@
+import Subject from '../Subject/Subject'
 import './Profile.css'
 
-const Profile = () => {
+const subjectData = [
+  {
+    id: 1,
+    title: "Технологии и методы программирования",
+  },
+  {
+    id: 2,
+    title: "Электроника аппаратных средств защиты информации",
+  },
+  {
+    id: 3,
+    title: "Схемотехника дискретных устройств",
+  },
+  {
+    id: 4,
+    title: "Схемотехника аппаратных средств защиты информации",
+  },
+  {
+    id: 5,
+    title: "Основы микро- и радиоэлектроники",
+  },
+]
 
+const Profile = () => {
   return (
     <section className="subjects">
-      <div className="subject">
-        <div className="subject__image"></div>
-        <a className="subject__name" href="#">Технологии и методы программирования</a>
-      </div>
-      <div className="subject">
-        <div className="subject__image"></div>
-        <a className="subject__name" href="#">Электроника аппаратных средств защиты информации</a>
-      </div>
-      <div className="subject">
-        <div className="subject__image"></div>
-        <a className="subject__name" href="#">Схемотехника дискретных устройств</a>
-      </div>
-      <div className="subject">
-        <div className="subject__image"></div>
-        <a className="subject__name" href="#">Схемотехника аппаратных средств защиты информации</a>
-      </div>
-      <div className="subject">
-        <div className="subject__image"></div>
-        <a className="subject__name" href="#">Основы микро- и радиоэлектроники</a>
-      </div>
+      {subjectData.map((subject) => (
+        <Subject
+          key={subject.id}
+          id={subject.id}
+          title={subject.title}
+        />
+      ))}
     </section>
   )
 }
