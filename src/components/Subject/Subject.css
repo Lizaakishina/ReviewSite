@@ -23,12 +23,13 @@
 }
 
 .subject__semester{
-  margin: 5px;
+  margin: 8px 8px 3px 8px;
   font-size: 12px;
-  color: rgb(188, 188, 188);
+  color: rgb(166, 166, 166);
 }
 
 .subject__name {
-  margin: 5px;
+  margin: 8px;
   font-size: 14px;
+  font-weight: 400;
 }

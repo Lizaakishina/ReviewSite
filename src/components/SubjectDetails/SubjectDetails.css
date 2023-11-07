@@ -21,7 +21,17 @@
 }
 
 .subject__list {
-  margin-top: 50px;
+  margin-top: 30px;
+  border-bottom: 1px solid rgb(208, 208, 208);
+}
+
+.subject__list:nth-last-child(1) {
+  margin-bottom: 50px;
+}
+
+.subject__module {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .decor5 {
