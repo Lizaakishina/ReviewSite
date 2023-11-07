@@ -1,7 +1,7 @@
 .decor1 {
   z-index: -2;
   position: absolute;
-  bottom: 148px;
+  bottom: 160px;
   left: -275px;
   width: 400px;
   height: 400px;
@@ -34,7 +34,7 @@
 .decor4 {
   z-index: -3;
   position: absolute;
-  bottom: 350px;
+  bottom: 365px;
   right: -70px;
   width: 190px;
   height: 190px;
