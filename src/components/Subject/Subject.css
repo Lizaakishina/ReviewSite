@@ -13,7 +13,7 @@
 
 .subject:hover {
   transition: .3s;
-  transform: scale(1.01);
+  box-shadow: 11px 11px 22px #969696;
 }
 
 .subject__image{
