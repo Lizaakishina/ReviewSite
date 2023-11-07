@@ -5,4 +5,14 @@
   background-color: rgb(237, 237, 237);
   border-radius: 7px;
   max-width: 880px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.task__box {
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  border: 1px solid rgb(143, 143, 143);
 }

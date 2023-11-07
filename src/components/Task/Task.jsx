@@ -8,6 +8,7 @@ const Task = ({ id, title }) => {
       <Link to={`/task/` + id}>
         <p className="task__name">{title}</p>
       </Link>
+      <div className="task__box"></div>
     </section>
   )
 }
