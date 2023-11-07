@@ -5,3 +5,12 @@
   border-radius: 7px;
   max-width: 880px;
 }
+
+.taskDetails__linkLogo {
+  width: 38px;
+  height: 38px;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}

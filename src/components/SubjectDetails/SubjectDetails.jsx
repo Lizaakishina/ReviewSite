@@ -31,14 +31,18 @@ const SubjectDetails = () => {
         <p className="subjectDetails__text">&larr;</p>
         <p className="subjectDetails__text">Назад</p>
       </Link>
-      <div>
-      {TaskData.map((subject) => (
-        <Task
-          key={subject.id}
-          id={subject.id}
-          title={subject.title}
-        />
-      ))}
+      <div className="decor5"></div>
+      <div className="decor6"></div>
+      <div className="decor7"></div>
+      <div className="decor8"></div>
+      <div className="subject__list">
+        {TaskData.map((subject) => (
+          <Task
+            key={subject.id}
+            id={subject.id}
+            title={subject.title}
+          />
+        ))}
       </div>
     </section>
   )

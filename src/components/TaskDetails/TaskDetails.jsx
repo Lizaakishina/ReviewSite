@@ -46,7 +46,7 @@ const faqList = [
 const TaskDetails = () => {
   return (
     <section className="taskDetails">
-      <Link to="/profile" className="link subjectDetails__linkLogo">
+      <Link to="/profile" className="link taskDetails__linkLogo">
         <img src={logo} alt='логотип' />
         <p className="subjectDetails__text">&larr;</p>
         <p className="subjectDetails__text">Назад</p>
