@@ -11,7 +11,7 @@
 }
 
 .task:hover {
-  transition: .3s;
+  transition: .2s;
   box-shadow: 6px 6px 0px #d7d7d7;
 }
 
