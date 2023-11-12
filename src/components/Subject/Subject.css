@@ -22,6 +22,16 @@
   background-color: #b892d7;
 }
 
+.subject__percent {
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  position: absolute;
+  top: 80px;
+  margin-left: 6px;
+}
+
+
 .subject__semester{
   margin: 8px 8px 3px 8px;
   font-size: 12px;
