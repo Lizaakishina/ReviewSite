@@ -4,12 +4,12 @@ import './Task.css';
 
 const Task = ({ id, title }) => {
   return (
-    <section className="task">
-      <Link to={`/task/` + id}>
+    <Link to={`/task/` + id}>
+      <section className="task">
         <p className="task__name">{title}</p>
-      </Link>
-      <div className="task__box"></div>
-    </section>
+        <div className="task__box"></div>
+      </section>
+    </Link>
   )
 }
 
