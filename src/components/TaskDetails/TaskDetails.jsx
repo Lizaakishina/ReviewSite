@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Accordion from '../Accordion/Accordion';
 import logo from '../../images/logo.svg';
 import './TaskDetails.css';
@@ -44,13 +44,15 @@ const faqList = [
 ]
 
 const TaskDetails = () => {
+  let history = useHistory();
+
   return (
     <section className="taskDetails">
-      <Link to="/profile" className="link taskDetails__linkLogo">
-        <img src={logo} alt='логотип' />
-        <p className="subjectDetails__text">&larr;</p>
-        <p className="subjectDetails__text">Назад</p>
-      </Link>
+      <button type="button" onClick={() => history.goBack()} to="/profile" className="link taskDetails__linkLogo">
+        <img className="taskDetails__linkLogo" src={logo} alt='логотип' />
+        <p className="taskDetails__text">&larr;</p>
+        <p className="taskDetails__text">Назад</p>
+      </button>
       <Accordion faqList={faqList}/>
     </section>
   )

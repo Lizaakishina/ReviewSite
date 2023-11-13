@@ -13,36 +13,8 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { JWT, CHECKBOX, REGISTER_ERROR_MESSAGE } from '../../utils/constants';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { LoginContext } from '../../context/LoginContext';
-import { getUser, login, register } from '../../utils/mainApi';
+import { getUser, login } from '../../utils/mainApi';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-
-const subjectData = [
-  {
-    id: 1,
-    title: "Технологии и методы программирования",
-    semester: "2 семестр",
-  },
-  {
-    id: 2,
-    title: "Электроника аппаратных средств защиты информации",
-    semester: "4 семестр",
-  },
-  {
-    id: 3,
-    title: "Схемотехника дискретных устройств",
-    semester: "4 семестр",
-  },
-  {
-    id: 4,
-    title: "Схемотехника аппаратных средств защиты информации",
-    semester: "5 семестр",
-  },
-  {
-    id: 5,
-    title: "Основы микро- и радиоэлектроники",
-    semester: "5 семестр",
-  },
-]
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -74,7 +46,6 @@ const App = () => {
     try {
       setIsLoader(true);
       setIsButtonInactive(true);
-      //const res = await register({name, email, password});
       handleLogin({email, password});
     } catch (error) {
       if (error.statusCode === 400) {
