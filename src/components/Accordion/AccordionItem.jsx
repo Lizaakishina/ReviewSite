@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { ReactComponent as ArrowIcon } from '../../images/ArrowIcon.svg';
 
 export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
@@ -81,7 +83,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
               <div className="acc__container">
                 <p className="acc__title noselect">Написать</p>
                 <div className="acc__review">
-                  <span type="text">{text}</span>
+                  <SyntaxHighlighter language="java" style={docco}>{text}</SyntaxHighlighter>
                 </div>
                 {!isVisible &&
                 <div className="acc__change">
@@ -111,7 +113,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
               <div className="acc__container">
                 <p className="acc__title noselect">Написать</p>
                 <div className="acc__review">
-                  <textarea type="text" style={{width: "100%"}} id='notes'
+                  <textarea className="acc__textarea" type="text" style={{width: "100%"}} id='notes'
                     value={text}
                     onChange={(e) => {
                       const newText = e.target.value;
@@ -144,3 +146,5 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
     </li>
   )
 }
+
+//<span type="text">{text}</span>
