@@ -83,7 +83,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
               <div className="acc__container">
                 <p className="acc__title noselect">Написать</p>
                 <div className="acc__review">
-                  <SyntaxHighlighter language="java" style={docco}>{text}</SyntaxHighlighter>
+                  <SyntaxHighlighter language="javascript" style={docco}>{text}</SyntaxHighlighter>
                 </div>
                 {!isVisible &&
                 <div className="acc__change">
