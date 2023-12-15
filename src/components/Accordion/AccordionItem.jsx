@@ -127,6 +127,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
                       Удалить комментарий
                   </button>
                 </div>}
+                <div className="acc__line"></div>
               </div>
             </div>
           </div>
@@ -164,6 +165,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
                   </div>
                   <button className={`acc__comment noselect`} type="submit" onClick={() => {onClick(); handleTimerClick(); setEditingState()}}>Комментировать</button>
                 </div>
+                <div className="acc__line"></div>
               </div>
             </div>
           </div>

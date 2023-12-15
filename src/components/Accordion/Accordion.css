@@ -85,7 +85,7 @@
 }
 
 .acc__collapse-edit {
-  min-height: 251.6px;
+  min-height: 253.2px;
 }
 
 .acc__body {
@@ -223,6 +223,10 @@ pre {
   transform: scale(1.05);
 }
 
+.acc__line {
+  border: 0.1px solid rgb(208, 208, 208);
+}
+
 textarea {
   font-size: 14px;
   min-height: 80px;
@@ -233,6 +237,14 @@ textarea {
 
 span {
   font-size: 14px;
+}
+
+select {
+  margin: 20px 20px 0px;
+  width: 250px;
+  height: 30px;
+  border: 1px solid rgb(208, 208, 208);
+  border-radius: 7px;
 }
 
 @media screen and (max-width: 880px) {
@@ -308,12 +320,4 @@ span {
   .acc__edit {
     margin-bottom: 10px;
   }
-}
-
-select {
-  margin: 20px 20px 0px;
-  width: 250px;
-  height: 30px;
-  border: 1px solid rgb(208, 208, 208);
-  border-radius: 7px;
 }
