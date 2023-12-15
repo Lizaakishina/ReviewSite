@@ -11,7 +11,6 @@
   list-style-type: none;
   margin: 16px auto;
   padding: 16px;
-  background-color: rgb(237, 237, 237);
   border-radius: 7px;
   max-width: 880px;
 }
@@ -73,8 +72,7 @@
 }
 
 .acc__body {
-  margin: 0 10px;
-  padding: 10px 20px 10px 10px;
+  margin: 0;
   border-top: 1px solid rgb(214, 214, 214);
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
@@ -84,7 +82,8 @@
 
 .acc__container {
   background-color: white;
-  border-radius: 7px;
+  border: 1px solid rgb(208, 208, 208);
+  border-top: none;
 }
 
 .acc__title {
@@ -95,19 +94,27 @@
 }
 
 .acc__review {
-  margin: 10px;
-  min-height: 100px;
-  padding: 15px 15px 5px 15px;
-  border: 1px solid rgb(208, 208, 208);
-  border-radius: 7px;
+  font-size: 16px;
+  min-height: 130px;
+  padding: 15px 15px 0px 15px;
+  background-color: rgb(255, 255, 255);
+}
+
+pre {
   background-color: rgb(248, 248, 255);
+  margin: 10px;
+  border: 1px solid rgb(208, 208, 208);
+  border-radius: 5px;
 }
 
 .acc__textarea {
-  background-color: rgb(248, 248, 255);
+  background-color: rgb(255, 255, 255);
+  min-height: 100px;
+  font-size: 16px;
 }
 
 .acc__result {
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -116,6 +123,7 @@
 }
 
 .acc__change {
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -165,7 +173,6 @@
   border-radius: 7px;
   padding: 15px;
   font-size: 16px;
-  margin-bottom: 10px;
 }
 
 .acc__edit:hover {
@@ -179,7 +186,6 @@
   border-radius: 7px;
   padding: 15px;
   font-size: 16px;
-  margin-bottom: 10px;
 }
 
 .acc__send:hover {
@@ -193,7 +199,6 @@
   border-radius: 7px;
   padding: 15px;
   font-size: 16px;
-  margin-bottom: 10px;
 }
 
 .acc__delete:hover {

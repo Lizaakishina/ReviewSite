@@ -1,7 +1,10 @@
 import React, { useRef, useState } from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import Markdown from 'react-markdown'
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { ReactComponent as ArrowIcon } from '../../images/ArrowIcon.svg';
+import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
+import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript';
+SyntaxHighlighter.registerLanguage('javascript', js);
 
 export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
   const itemRef = useRef(null);
@@ -81,9 +84,30 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
           <div className="acc__collapse" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
             <div className="acc__body" ref={itemRef}>
               <div className="acc__container">
-                <p className="acc__title noselect">Написать</p>
+              <p className="acc__title noselect">Комментарий</p>
                 <div className="acc__review">
-                  <SyntaxHighlighter language="javascript" style={docco}>{text}</SyntaxHighlighter>
+                  <Markdown
+                    components={{
+                      code({ node, inline, className, children, ...props }) {
+                        const match = /language-(\w+)/.exec(className || '')
+                        return !inline && match ? (
+                          <SyntaxHighlighter
+                            style={docco}
+                            PreTag="div"
+                            language={match[1]}
+                            children={String(children).replace(/\n$/, '')}
+                            {...props}
+                          />
+                        ) : (
+                          <code className={className ? className : ''} {...props}>
+                            {children}
+                          </code>
+                        )
+                      },
+                    }}
+                  >
+                    {text}
+                  </Markdown>
                 </div>
                 {!isVisible &&
                 <div className="acc__change">
@@ -146,5 +170,3 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
     </li>
   )
 }
-
-//<span type="text">{text}</span>
