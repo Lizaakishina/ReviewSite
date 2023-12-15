@@ -81,7 +81,11 @@
 }
 
 .acc__collapse.open {
-  height: 100%;
+  height: auto;
+}
+
+.acc__collapse-edit {
+  min-height: 251.6px;
 }
 
 .acc__body {
@@ -294,6 +298,14 @@ span {
   }
 
   .acc__choice {
+    margin-bottom: 10px;
+  }
+
+  .acc__collapse-edit {
+    min-height: 346.4px;
+  }
+
+  .acc__edit {
     margin-bottom: 10px;
   }
 }

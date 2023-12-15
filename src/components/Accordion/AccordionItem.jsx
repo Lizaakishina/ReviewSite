@@ -133,7 +133,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
         )
         :
         (
-          <div className="acc__collapse" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
+          <div className="acc__collapse acc__collapse-edit" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
             <div className="acc__body" ref={itemRef}>
               <div className="acc__container">
                 <p className="acc__title noselect">Написать</p>
