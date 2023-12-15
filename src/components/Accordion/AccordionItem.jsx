@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import TextareaAutosize from 'react-textarea-autosize';
 import Markdown from 'react-markdown'
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { ReactComponent as ArrowIcon } from '../../images/ArrowIcon.svg';
@@ -137,13 +138,14 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
               <div className="acc__container">
                 <p className="acc__title noselect">Написать</p>
                 <div className="acc__review">
-                  <textarea className="acc__textarea" type="text" style={{width: "100%"}} id='notes'
+                  <TextareaAutosize className="acc__textarea" type="text" style={{width: "100%"}} id='notes'
                     value={text}
+                    placeholder="Напишите здесь что-то..."
                     onChange={(e) => {
                       const newText = e.target.value;
                       setNewText(newText);
                     }}>
-                  </textarea>
+                  </TextareaAutosize>
                 </div>
                 <div className="acc__result">
                   <div className="acc__checkbox">
