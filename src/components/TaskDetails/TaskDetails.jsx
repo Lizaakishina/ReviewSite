@@ -7,39 +7,47 @@ import './TaskDetails.css';
 const faqList = [
   {
     id: 1,
-    title: 'Do I have to allow the use of cookies?',
+    title: 'const [text, setNewText] = useState("");',
   },
   {
     id: 2,
-    title: 'How do I change my My Page password?',
+    title: 'def check_duplicate(lst):',
   },
   {
     id: 3,
-    title: 'What is BankID?',
+    title: '  return len(lst) != len(set(lst))',
   },
   {
     id: 4,
-    title: 'Whose birth number can I use?',
+    title: 'print(check_duplicate([51, 37, 3, 45, 5, 49, 77]))',
   },
   {
     id: 5,
-    title: 'When do I recieve a password ordered by letter?',
+    title: 'print(check_duplicate([1, 3, 3]))',
   },
   {
     id: 6,
-    title: 'When do I recieve a password ordered by letter?',
+    title: 'print(check_duplicate([11, 2, 88, 4, 16]))',
   },
   {
     id: 7,
-    title: 'When do I recieve a password ordered by letter?',
+    title: 'var_1 = [1, 5, 6, 7]',
   },
   {
     id: 8,
-    title: 'When do I recieve a password ordered by letter?',
+    title: 'sum = 0',
   },
   {
     id: 9,
-    title: 'When do I recieve a password ordered by letter?',
+    title: 'for i in var_1:',
+  },
+  {
+  id: 10,
+    title: '  sum += i',
+  },
+  {
+  id: 11,
+    title: 'print(sum/len(var_1))',
   },
 ]
 

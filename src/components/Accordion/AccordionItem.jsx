@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import Markdown from 'react-markdown'
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { docco, a11yLight } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { ReactComponent as ArrowIcon } from '../../images/ArrowIcon.svg';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript';
@@ -77,7 +77,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
         className={`acc__header ${toggleClassCheckGreen} ${toggleClassCheckGrey} ${toggleClassCheckRed}`}
         onClick={() => {onClick()}}
       >
-        {faqItem.title}
+        <SyntaxHighlighter className="acc__highlighter" language="python" style={a11yLight}>{faqItem.title}</SyntaxHighlighter>
         <ArrowIcon className={`acc__arrow ${isOpen ? "active" : ""}`} />
       </button>
       <div>
@@ -85,7 +85,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
           <div className="acc__collapse" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
             <div className="acc__body" ref={itemRef}>
               <div className="acc__container">
-              <p className="acc__title noselect">Комментарий</p>
+              <p className="acc__title noselect"></p>
                 <div className="acc__review">
                   <Markdown
                     components={{
