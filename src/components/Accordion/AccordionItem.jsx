@@ -77,7 +77,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
         className={`acc__header ${toggleClassCheckGreen} ${toggleClassCheckGrey} ${toggleClassCheckRed}`}
         onClick={() => {onClick()}}
       >
-        <SyntaxHighlighter className="acc__highlighter" language="python" style={a11yLight}>{faqItem.title}</SyntaxHighlighter>
+        <SyntaxHighlighter className="acc__highlighter" language="javascript" style={a11yLight}>{faqItem.title}</SyntaxHighlighter>
         <ArrowIcon className={`acc__arrow ${isOpen ? "active" : ""}`} />
       </button>
       <div>
