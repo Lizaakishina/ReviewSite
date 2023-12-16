@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import Markdown from 'react-markdown'
 import { docco, a11yLight } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { ReactComponent as ArrowIcon } from '../../images/ArrowIcon.svg';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript';
 SyntaxHighlighter.registerLanguage('javascript', js);
@@ -78,13 +77,12 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
         onClick={() => {onClick()}}
       >
         <SyntaxHighlighter className="acc__highlighter" language="javascript" style={a11yLight}>{faqItem.title}</SyntaxHighlighter>
-        <ArrowIcon className={`acc__arrow ${isOpen ? "active" : ""}`} />
       </button>
       <div>
         {isEditing ? (
           <div className="acc__collapse" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
-            <div className="acc__body" ref={itemRef}>
-              <div className="acc__container">
+            <div className="acc__body">
+              <div className="acc__container" ref={itemRef}>
               <p className="acc__title noselect"></p>
                 <div className="acc__review">
                   <Markdown
@@ -135,8 +133,8 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
         :
         (
           <div className="acc__collapse acc__collapse-edit" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
-            <div className="acc__body" ref={itemRef}>
-              <div className="acc__container">
+            <div className="acc__body">
+              <div className="acc__container" ref={itemRef}>
                 <p className="acc__title noselect">Написать</p>
                 <div className="acc__review">
                   <TextareaAutosize className="acc__textarea" type="text" style={{width: "100%"}} id='notes'
@@ -163,7 +161,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
                       <div className="acc__label noselect">Отлично</div>
                     </div>
                   </div>
-                  <button className={`acc__comment noselect`} type="submit" onClick={() => {onClick(); handleTimerClick(); setEditingState()}}>Комментировать</button>
+                  <button className={`acc__comment noselect`} type="submit" onClick={() => {handleTimerClick(); setEditingState()}}>Комментировать</button>
                 </div>
                 <div className="acc__line"></div>
               </div>
@@ -174,3 +172,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
     </li>
   )
 }
+
+/*Забракованные стрелочки
+import { ReactComponent as ArrowIcon } from '../../images/ArrowIcon.svg';
+<ArrowIcon className={`acc__arrow ${isOpen ? "active" : ""}`} />*/

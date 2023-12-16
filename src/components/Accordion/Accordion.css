@@ -88,18 +88,21 @@
 }
 
 .acc__collapse-edit {
-  min-height: 253.2px;
+  min-height: auto;
 }
 
 .acc__body {
+  height: 100% !important;
   margin: 0;
   font-size: 20px;
   color: #393939;
   border: 0.1px solid rgb(208, 208, 208);
+  border-bottom: none;
 }
 
 .acc__container {
   background-color: white;
+  min-height: 231px;
 }
 
 .acc__title {
@@ -128,10 +131,6 @@ pre {
   margin: 10px;
   border: 1px solid rgb(208, 208, 208);
   border-radius: 5px;
-}
-
-.acc__textarea::-webkit-scrollbar {
-  width: 0px;
 }
 
 .acc__result {
@@ -234,6 +233,7 @@ pre {
 textarea {
   font-size: 14px;
   min-height: 80px;
+  max-height: 400px;
   overflow-x: hidden;
   overflow-y: scroll;
   resize: none;
