@@ -5,6 +5,7 @@ import { docco, a11yLight } from "react-syntax-highlighter/dist/esm/styles/hljs"
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript';
 import './AccordionItem.css';
+
 SyntaxHighlighter.registerLanguage('javascript', js);
 
 export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
@@ -15,7 +16,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
   const [checkedGreen, setCheckedGreen] = useState(false);
   const [checkedGrey, setCheckedGrey] = useState(false);
   const [checkedRed, setCheckedRed] = useState(false);
-  const [isEditing, setEditing] = useState(true)
+  const [isEditing, setEditing] = useState(true);
   const [isVisible, setIsVisible ] = useState(false);
   const [text, setNewText] = useState("");
 
