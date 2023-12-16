@@ -42,7 +42,26 @@ const Accordion = ({faqList}) => {
       <div>
         {isEditing ? (
           <div className="acc__container">
-          <p className="acc__title noselect"></p>
+            <p className="acc__title noselect">Написать</p>
+            <div className="acc__review">
+              <TextareaAutosize className="acc__textarea" type="text" style={{width: "100%"}} id='notes'
+                value={text}
+                placeholder="Напишите здесь что-то..."
+                onChange={(e) => {
+                  const newText = e.target.value;
+                  setNewText(newText);
+                }}>
+              </TextareaAutosize>
+            </div>
+            <div className="acc__result">
+              <button className={`acc__comment noselect`} type="submit" onClick={() => {handleTimerClick(); setEditingState()}}>Комментировать</button>
+            </div>
+          </div>
+        )
+        :
+        (
+          <div className="acc__container">
+          <p className="acc__title noselect">Текст комментария:</p>
             <div className="acc__review">
               <Markdown
                 components={{
@@ -80,28 +99,10 @@ const Accordion = ({faqList}) => {
               </button>
             </div>}
           </div>
-        )
-        :
-        (
-          <div className="acc__container">
-            <p className="acc__title noselect">Написать</p>
-            <div className="acc__review">
-              <TextareaAutosize className="acc__textarea" type="text" style={{width: "100%"}} id='notes'
-                value={text}
-                placeholder="Напишите здесь что-то..."
-                onChange={(e) => {
-                  const newText = e.target.value;
-                  setNewText(newText);
-                }}>
-              </TextareaAutosize>
-            </div>
-            <div className="acc__result">
-              <button className={`acc__comment noselect`} type="submit" onClick={() => {handleTimerClick(); setEditingState()}}>Комментировать</button>
-            </div>
-          </div>
+
         )}
       </div>
-      <div className="acc__bth-contaier"><button className={`acc__bth-end noselect`} type="submit">Отправить комментарий</button></div>
+      <div className="acc__bth-contaier"><button className={`acc__bth-end noselect`} type="submit">Отправить отзыв</button></div>
     </div>
   )
 }
