@@ -31,7 +31,7 @@
 }
 
 .acc__header:hover {
-  background-color: rgb(232, 232, 232);
+  background-color: rgb(241, 241, 241);
 }
 
 .acc__header-red {
@@ -68,10 +68,13 @@
   width: 30px;
   height: 17px;
   transform: translateY(-50%);
+  padding-left: 15px;
 }
 
 .acc__arrow.active {
   transform: translateY(-50%) rotate(180deg);
+  padding-left: 0px;
+  padding-right: 15px;
 }
 
 .acc__collapse {
@@ -108,7 +111,7 @@
 
 .acc__review {
   font-size: 16px;
-  padding: 15px 15px 15px 15px;
+  padding: 5px 15px 5px 15px;
   background-color: rgb(255, 255, 255);
   min-height: 130px;
 }
@@ -190,6 +193,7 @@ pre {
   border-radius: 7px;
   padding: 15px;
   font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .acc__edit:hover {
