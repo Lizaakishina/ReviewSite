@@ -4,6 +4,7 @@ import Markdown from 'react-markdown'
 import { docco, a11yLight } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript';
+import './AccordionItem.css';
 SyntaxHighlighter.registerLanguage('javascript', js);
 
 export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
@@ -82,7 +83,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
         {isEditing ? (
           <div className="acc__collapse" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
             <div className="acc__body">
-              <div className="acc__container" ref={itemRef}>
+              <div className="accItem__container" ref={itemRef}>
               <p className="acc__title noselect"></p>
                 <div className="acc__review">
                   <Markdown
@@ -134,7 +135,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
         (
           <div className="acc__collapse acc__collapse-edit" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
             <div className="acc__body">
-              <div className="acc__container" ref={itemRef}>
+              <div className="accItem__container" ref={itemRef}>
                 <p className="acc__title noselect">Написать</p>
                 <div className="acc__review">
                   <TextareaAutosize className="acc__textarea" type="text" style={{width: "100%"}} id='notes'

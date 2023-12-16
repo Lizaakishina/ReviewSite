@@ -1,28 +1,43 @@
 import React, { useState } from 'react';
-//import supportedLanguages from 'react-syntax-highlighter/dist/cjs/languages/hljs/supported-languages';
+import TextareaAutosize from 'react-textarea-autosize';
 import { AccordionItem } from './AccordionItem';
-import './Accordion.css';
 
 const Accordion = ({faqList}) => {
   const [openId, setId] = useState(null);
-  const defaultLanguage = "javascript";
-  //const [language, setLanguage] = useState(defaultLanguage);
+  const [text, setNewText] = useState("");
 
   return (
-    <ol className="acc">
-      {faqList.map((faqItem, id) => {
-        return (
-          <AccordionItem
-            onClick={() => (id === openId ? setId(null) : setId(id))}
-            faqItem={faqItem}
-            isOpen={id === openId}
-            key={id}
-            name={id}
-            //language={language}
-          />
-        )
-      })}
-    </ol>
+    <div>
+      <ol className="acc">
+        {faqList.map((faqItem, id) => {
+          return (
+              <AccordionItem
+                onClick={() => (id === openId ? setId(null) : setId(id))}
+                faqItem={faqItem}
+                isOpen={id === openId}
+                key={id}
+                name={id}
+              />
+          )
+        })}
+      </ol>
+      <div className="acc__container">
+        <p className="acc__title noselect">Написать</p>
+        <div className="acc__review">
+          <TextareaAutosize className="acc__textarea" type="text" style={{width: "100%"}} id='notes'
+            value={text}
+            placeholder="Напишите здесь что-то..."
+            onChange={(e) => {
+              const newText = e.target.value;
+              setNewText(newText);
+            }}>
+          </TextareaAutosize>
+        </div>
+        <div className="acc__result">
+          <button className={`acc__comment noselect`} type="submit">Отправить комментарий</button>
+        </div>
+      </div>
+    </div>
   )
 }
 
