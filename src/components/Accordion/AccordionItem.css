@@ -102,7 +102,6 @@
 }
 
 .acc__body {
-  height: 100% !important;
   margin: 0;
   font-size: 20px;
   color: #393939;
@@ -112,7 +111,6 @@
 
 .accItem__container {
   background-color: white;
-  min-height: 231px;
 }
 
 .acc__title {
