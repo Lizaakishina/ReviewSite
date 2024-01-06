@@ -97,10 +97,6 @@
   height: auto;
 }
 
-.acc__collapse-edit {
-  min-height: auto;
-}
-
 .acc__body {
   margin: 0;
   font-size: 20px;
@@ -324,10 +320,6 @@ select {
 
   .acc__choice {
     margin-bottom: 10px;
-  }
-
-  .acc__collapse-edit {
-    min-height: 346.4px;
   }
 
   .acc__edit {
