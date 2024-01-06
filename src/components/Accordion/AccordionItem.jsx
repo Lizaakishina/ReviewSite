@@ -21,12 +21,16 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
   const [isEditing, setEditing] = useState(true);
 
   useEffect(() => {
-    if (isOpen) {
-      itemRef.current.style.height = `${itemRef.current.scrollHeight}px`;
-    } else {
-      itemRef.current.style.height = "0px";
+    if (itemRef.current && isOpen) {
+      const intervalId = setInterval(() => {
+        itemRef.current.style.height = `${itemRef.current.scrollHeight}px`;
+      }, 1000);
+
+      return () => {
+        clearInterval(intervalId);
+      };
     }
-  }, [isOpen])
+  }, [isOpen, text]);
 
   const handleTimerClick = () => {
     setIsVisible(true);
@@ -90,9 +94,9 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
       </button>
       <div>
         {isEditing ? (
-          <div className="acc__collapse acc__collapse-edit" ref={itemRef}>
+          <div className="acc__collapse acc__collapse-edit" ref={itemRef} style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
           <div className="acc__body">
-            <div className="accItem__container" >
+            <div className="accItem__container">
               <p className="acc__title noselect">Написать</p>
               <div className="acc__review">
                 <TextareaAutosize className="acc__textarea" type="text" style={{width: "100%"}} id='notes'
@@ -128,7 +132,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
         )
         :
         (
-          <div className="acc__collapse" ref={itemRef}>
+          <div className="acc__collapse" ref={itemRef} style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
           <div className="acc__body">
             <div className="accItem__container">
             <p className="acc__title noselect"></p>
@@ -158,7 +162,7 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
               </div>
               {!isVisible &&
               <div className="acc__change">
-                <button className={`acc__edit noselect`} type="submit" onClick={setEditingState}>Редактировать</button>
+                <button className={`acc__edit noselect`} type="submit" onClick={() => {setEditingState()}}>Редактировать</button>
                 <button
                   className={`acc__delete noselect`}
                   type="submit"
@@ -182,7 +186,3 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
     </li>
   )
 }
-
-/*Забракованные стрелочки
-import { ReactComponent as ArrowIcon } from '../../images/ArrowIcon.svg';
-<ArrowIcon className={`acc__arrow ${isOpen ? "active" : ""}`} />*/
