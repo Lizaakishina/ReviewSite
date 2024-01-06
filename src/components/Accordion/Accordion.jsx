@@ -12,7 +12,7 @@ const Accordion = ({faqList}) => {
   const [openId, setId] = useState(null);
   const [text, setNewText] = useState("");
   const [isEditing, setEditing] = useState(true);
-  const [isVisible, setIsVisible ] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleTimerClick = () => {
     setIsVisible(true);
@@ -99,7 +99,6 @@ const Accordion = ({faqList}) => {
               </button>
             </div>}
           </div>
-
         )}
       </div>
       <div className="acc__bth-contaier"><button className={`acc__bth-end noselect`} type="submit">Отправить отзыв</button></div>

@@ -16,9 +16,9 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
   const [checkedGreen, setCheckedGreen] = useState(false);
   const [checkedGrey, setCheckedGrey] = useState(false);
   const [checkedRed, setCheckedRed] = useState(false);
-  const [isEditing, setEditing] = useState(true);
   const [isVisible, setIsVisible ] = useState(false);
   const [text, setNewText] = useState("");
+  const [isEditing, setEditing] = useState(true);
 
   const handleTimerClick = () => {
     setIsVisible(true);
@@ -82,92 +82,92 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
       </button>
       <div>
         {isEditing ? (
-          <div className="acc__collapse" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
-            <div className="acc__body">
-              <div className="accItem__container" ref={itemRef}>
-              <p className="acc__title noselect"></p>
-                <div className="acc__review">
-                  <Markdown
-                    components={{
-                      code({ node, inline, className, children, ...props }) {
-                        const match = /language-(\w+)/.exec(className || '')
-                        return !inline && match ? (
-                          <SyntaxHighlighter
-                            style={docco}
-                            PreTag="div"
-                            language={match[1]}
-                            children={String(children).replace(/\n$/, '')}
-                            {...props}
-                          />
-                        ) : (
-                          <code className={className ? className : ''} {...props}>
-                            {children}
-                          </code>
-                        )
-                      },
-                    }}
-                  >
-                    {text}
-                  </Markdown>
-                </div>
-                {!isVisible &&
-                <div className="acc__change">
-                  <button className={`acc__edit noselect`} type="submit" onClick={setEditingState}>Редактировать</button>
-                  <button
-                    className={`acc__delete noselect`}
-                    type="submit"
-                    onClick={() => {
-                      setNewText("");
-                      setBthStateRed(false);
-                      setBthStateGreen(false);
-                      setBthStateGrey(false);
-                      setCheckedRed(false);
-                      setCheckedGrey(false);
-                      setCheckedGreen(false);}}>
-                      Удалить комментарий
-                  </button>
-                </div>}
-                <div className="acc__line"></div>
+          <div className="acc__collapse acc__collapse-edit" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
+          <div className="acc__body">
+            <div className="accItem__container" ref={itemRef}>
+              <p className="acc__title noselect">Написать</p>
+              <div className="acc__review">
+                <TextareaAutosize className="acc__textarea" type="text" style={{width: "100%"}} id='notes'
+                  value={text}
+                  placeholder="Напишите здесь что-то..."
+                  onChange={(e) => {
+                    const newText = e.target.value;
+                    setNewText(newText);
+                  }}>
+                </TextareaAutosize>
               </div>
+              <div className="acc__result">
+                <div className="acc__checkbox">
+                  <div className="acc__choice" onClick={handleClickRed}>
+                    <input className="acc__input" type="radio" id="red" name={name} value="red" checked={checkedRed}></input>
+                    <div className="acc__label noselect">Надо исправлять</div>
+                  </div>
+                  <div className="acc__choice" onClick={handleClickGrey}>
+                    <input className="acc__input" type="radio" id="grey" name={name} value="grey" checked={checkedGrey}></input>
+                    <div className="acc__label noselect">Можно лучше</div>
+                  </div>
+                  <div className="acc__choice" onClick={handleClickGreen}>
+                    <input className="acc__input" type="radio" id="green" name={name} value="green" checked={checkedGreen}></input>
+                    <div className="acc__label noselect">Отлично</div>
+                  </div>
+                </div>
+                <button className={`acc__comment noselect`} type="submit" onClick={() => {handleTimerClick(); setEditingState()}}>Комментировать</button>
+              </div>
+              <div className="acc__line"></div>
             </div>
           </div>
+        </div>
         )
         :
         (
-          <div className="acc__collapse acc__collapse-edit" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
-            <div className="acc__body">
-              <div className="accItem__container" ref={itemRef}>
-                <p className="acc__title noselect">Написать</p>
-                <div className="acc__review">
-                  <TextareaAutosize className="acc__textarea" type="text" style={{width: "100%"}} id='notes'
-                    value={text}
-                    placeholder="Напишите здесь что-то..."
-                    onChange={(e) => {
-                      const newText = e.target.value;
-                      setNewText(newText);
-                    }}>
-                  </TextareaAutosize>
-                </div>
-                <div className="acc__result">
-                  <div className="acc__checkbox">
-                    <div className="acc__choice" onClick={handleClickRed}>
-                      <input className="acc__input" type="radio" id="red" name={name} value="red" checked={checkedRed}></input>
-                      <div className="acc__label noselect">Надо исправлять</div>
-                    </div>
-                    <div className="acc__choice" onClick={handleClickGrey}>
-                      <input className="acc__input" type="radio" id="grey" name={name} value="grey" checked={checkedGrey}></input>
-                      <div className="acc__label noselect">Можно лучше</div>
-                    </div>
-                    <div className="acc__choice" onClick={handleClickGreen}>
-                      <input className="acc__input" type="radio" id="green" name={name} value="green" checked={checkedGreen}></input>
-                      <div className="acc__label noselect">Отлично</div>
-                    </div>
-                  </div>
-                  <button className={`acc__comment noselect`} type="submit" onClick={() => {handleTimerClick(); setEditingState()}}>Комментировать</button>
-                </div>
-                <div className="acc__line"></div>
+          <div className="acc__collapse" style={isOpen ? {height: itemRef.current.scrollHeight} : {height: "0px"}}>
+          <div className="acc__body">
+            <div className="accItem__container" ref={itemRef}>
+            <p className="acc__title noselect"></p>
+              <div className="acc__review">
+                <Markdown
+                  components={{
+                    code({ node, inline, className, children, ...props }) {
+                      const match = /language-(\w+)/.exec(className || '')
+                      return !inline && match ? (
+                        <SyntaxHighlighter
+                          style={docco}
+                          PreTag="div"
+                          language={match[1]}
+                          children={String(children).replace(/\n$/, '')}
+                          {...props}
+                        />
+                      ) : (
+                        <code className={className ? className : ''} {...props}>
+                          {children}
+                        </code>
+                      )
+                    },
+                  }}
+                >
+                  {text}
+                </Markdown>
               </div>
+              {!isVisible &&
+              <div className="acc__change">
+                <button className={`acc__edit noselect`} type="submit" onClick={setEditingState}>Редактировать</button>
+                <button
+                  className={`acc__delete noselect`}
+                  type="submit"
+                  onClick={() => {
+                    setNewText("");
+                    setBthStateRed(false);
+                    setBthStateGreen(false);
+                    setBthStateGrey(false);
+                    setCheckedRed(false);
+                    setCheckedGrey(false);
+                    setCheckedGreen(false);}}>
+                    Удалить комментарий
+                </button>
+              </div>}
+              <div className="acc__line"></div>
             </div>
+          </div>
           </div>
         )}
       </div>
