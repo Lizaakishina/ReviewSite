@@ -173,7 +173,8 @@ export const AccordionItem = ({faqItem, onClick, isOpen, name }) => {
                     setBthStateGrey(false);
                     setCheckedRed(false);
                     setCheckedGrey(false);
-                    setCheckedGreen(false);}}>
+                    setCheckedGreen(false);
+                    onClick();}}>
                     Удалить комментарий
                 </button>
               </div>}
