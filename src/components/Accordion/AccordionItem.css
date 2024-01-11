@@ -242,6 +242,9 @@ textarea {
   overflow-x: hidden;
   overflow-y: scroll;
   resize: none;
+  padding: 5px;
+  border: 1px dotted #c591f083;
+  border-radius: 5px;
 }
 
 span {
