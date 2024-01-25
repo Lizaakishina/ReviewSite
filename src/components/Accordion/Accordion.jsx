@@ -61,7 +61,7 @@ const Accordion = ({faqList}) => {
         :
         (
           <div className="acc__container">
-          <p className="acc__title noselect">Текст комментария:</p>
+          <p className="acc__title noselect"></p>
             <div className="acc__review">
               <Markdown
                 components={{
