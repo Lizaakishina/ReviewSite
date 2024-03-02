@@ -62,11 +62,11 @@ const App = () => {
     }
   }
 
-  const handleLogin = async ({email, password}) => {
+  const handleLogin = async ({username, password}) => {
     try {
       setIsLoader(true);
       setIsButtonInactive(true);
-      const res = await login({email, password});
+      const res = await login({username, password});
       localStorage.setItem(JWT, res.token);
       const user = await getUser(res.token);
       setCurrentUser({_id: user._id, name: user.name, email: user.email});

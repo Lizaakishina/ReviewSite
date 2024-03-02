@@ -23,7 +23,7 @@ const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive})
     e.preventDefault();
 
     onSubmit({
-      email: values.email,
+      username: values.username,
       password: values.password
     })
   }, [values]);
@@ -35,7 +35,7 @@ const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive})
         <img src={logo} className="login__logo" alt='логотип' />
       </Link>
         <h2 className="login__hello noselect">Рады видеть!</h2>
-        <form className="login__form form" onSubmit={handleSubmit} noValidate>
+        <form className="login__form form" onSubmit={handleSubmit} noValidate method="post" encType="multipart/form-data">
           <Fieldset
             input = "email"
             inputType = "email"
@@ -53,14 +53,14 @@ const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive})
             inputType = "password"
             placeholder = "Пароль"
             name="password"
-            minLength="8"
+            minLength="4"
             maxLength="50"
             onChange={handleChange}
             errors={errors}
             isValid={isValid}
           />
           <span className={`login__errorMessage ${!!errorMessageApi && "login__errorMessage_active"}`}>{errorMessageApi}</span>
-          <button className={`form__button ${!isValid && "form__button_inactive"}`} disabled={!isValid && !isButtonInactive}>
+          <button type="submit" className={`form__button ${!isValid && "form__button_inactive"}`} disabled={!isValid && !isButtonInactive}>
             {isLoader ? "Выполняется вход..." : "Войти"}
           </button>
         </form>

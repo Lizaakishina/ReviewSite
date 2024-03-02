@@ -30,16 +30,16 @@ export const register = async ({ email, password, is_active, is_superuser, is_ve
   }
 }
 
-export const login = async ({ email, password }) => {
+export const login = async ({ username, password }) => {
   try {
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+
     const res = await fetch(`${BASE_URL}/auth/jwt/login`, {
       method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, password })
-    })
+      body: formData
+    });
 
     const data = await checkAnswer(res);
     return data;
@@ -57,7 +57,6 @@ export const getUser = async (token) => {
         'Authorization': `Bearer ${token}`
       }
     })
-
     const data = await checkAnswer(res);
     return data;
   } catch (error) {
@@ -76,7 +75,6 @@ export const updateUser = async ({name, email}) => {
       },
       body: JSON.stringify({name, email})
     });
-
     const data = await checkAnswer(res);
     return data;
   } catch (error) {
