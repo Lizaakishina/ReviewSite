@@ -35,13 +35,13 @@ const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive})
         <img src={logo} className="login__logo" alt='логотип' />
       </Link>
         <h2 className="login__hello noselect">Рады видеть!</h2>
-        <form className="login__form form" onSubmit={handleSubmit} noValidate method="post" encType="multipart/form-data">
+        <form className="login__form form" onSubmit={handleSubmit} noValidate method="post">
           <Fieldset
             input = "email"
             inputType = "email"
             placeholder = "E-mail"
             pattern={EMAIL_PATTERN}
-            name="email"
+            name="username"
             minLength="4"
             maxLength="40"
             onChange={handleChange}

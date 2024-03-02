@@ -40,7 +40,6 @@ export const login = async ({ username, password }) => {
       method: 'POST',
       body: formData
     });
-
     const data = await checkAnswer(res);
     return data;
   } catch (error) {

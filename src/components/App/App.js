@@ -47,7 +47,7 @@ const App = () => {
       setIsLoader(true);
       setIsButtonInactive(true);
       const res = await register({email, password, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher});
-      handleLogin({email, password});
+      handleLogin({username, password});
     } catch (error) {
       if (error.statusCode === 400) {
         setErrorMessageApi(REGISTER_ERROR_MESSAGE)
