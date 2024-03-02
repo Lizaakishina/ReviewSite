@@ -23,9 +23,15 @@ const Register = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactiv
     e.preventDefault();
 
     onSubmit({
-      name: values.name,
       email: values.email,
-      password: values.password
+      password: values.password,
+      is_active: true,
+      is_superuser: false,
+      is_verified: false,
+      username: values.username,
+      first_name: values.first_name,
+      last_name: values.last_name,
+      is_teacher: false
     })
   }, [values]);
 
@@ -37,11 +43,33 @@ const Register = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactiv
         </Link>
         <h2 className="register__hello noselect">Добро пожаловать!</h2>
         <form className="form register__form" onSubmit={handleSubmit} noValidate>
+        <Fieldset
+            input = "text"
+            inputType = "first_name"
+            placeholder = "Имя"
+            name="first_name"
+            minLength="4"
+            maxLength="40"
+            onChange={handleChange}
+            errors={errors}
+            isValid={isValid}
+          />
           <Fieldset
             input = "text"
-            inputType = "name"
-            placeholder = "Имя"
-            name="name"
+            inputType = "last_name"
+            placeholder = "Фамилия"
+            name="last_name"
+            minLength="4"
+            maxLength="40"
+            onChange={handleChange}
+            errors={errors}
+            isValid={isValid}
+          />
+          <Fieldset
+            input = "text"
+            inputType = "username"
+            placeholder = "Username"
+            name="username"
             minLength="4"
             maxLength="40"
             onChange={handleChange}

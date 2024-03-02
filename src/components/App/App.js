@@ -42,11 +42,11 @@ const App = () => {
     }
   }, [loggedIn])
 
-  const handleRegister = async ({name, email, password}) => {
+  const handleRegister = async ({email, password, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher}) => {
     try {
       setIsLoader(true);
       setIsButtonInactive(true);
-      const res = await register({name, email, password});
+      const res = await register({email, password, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher});
       handleLogin({email, password});
     } catch (error) {
       if (error.statusCode === 400) {
@@ -111,7 +111,7 @@ const App = () => {
         <LoginContext.Provider value={loggedIn}>
           <Switch>
             <Route exact path="/">
-              <Redirect to="/signin" />
+              <Redirect to="/auth/jwt/login" />
             </Route>
             <Route exact path="/profile">
               <Main />
@@ -119,7 +119,7 @@ const App = () => {
             <Route path="/signup">
               <Register onSubmit={handleRegister} errorMessageApi={errorMessageApi} isLoader={isLoader} isButtonInactive={isButtonInactive}/>
             </Route>
-            <Route path="/signin">
+            <Route path="/auth/jwt/login">
               <Login onSubmit={handleLogin} errorMessageApi={errorMessageApi} isLoader={isLoader} isButtonInactive={isButtonInactive}/>
             </Route>
             <Route path="/subject/:id" render={() =>

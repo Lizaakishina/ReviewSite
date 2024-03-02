@@ -12,7 +12,7 @@ const checkAnswer = (res) => {
   })
 }
 
-export const register = async ({name, email, password}) => {
+export const register = async ({ email, password, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher }) => {
   try {
     const res = await fetch(`${BASE_URL}/auth/register`, {
       method: 'POST',
@@ -21,7 +21,7 @@ export const register = async ({name, email, password}) => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name, email, password })
+      body: JSON.stringify({ email, password, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher })
     });
     const data = await checkAnswer(res);
     return data;
