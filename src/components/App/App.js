@@ -13,7 +13,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { JWT, CHECKBOX, REGISTER_ERROR_MESSAGE } from '../../utils/constants';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { LoginContext } from '../../context/LoginContext';
-import { getUser, login } from '../../utils/api';
+import { getUser, login, register } from '../../utils/api';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const App = () => {
@@ -46,6 +46,7 @@ const App = () => {
     try {
       setIsLoader(true);
       setIsButtonInactive(true);
+      const res = await register({name, email, password});
       handleLogin({email, password});
     } catch (error) {
       if (error.statusCode === 400) {

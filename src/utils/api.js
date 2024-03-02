@@ -1,5 +1,5 @@
 import { JWT } from './constants';
-const BASE_URL = '';
+const BASE_URL = 'http://127.0.0.1';
 
 const checkAnswer = (res) => {
   if(res.ok) {
@@ -14,7 +14,7 @@ const checkAnswer = (res) => {
 
 export const register = async ({name, email, password}) => {
   try {
-    const res = await fetch(`${BASE_URL}/signup`, {
+    const res = await fetch(`${BASE_URL}/auth/register`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -32,7 +32,7 @@ export const register = async ({name, email, password}) => {
 
 export const login = async ({ email, password }) => {
   try {
-    const res = await fetch(`${BASE_URL}/signin`, {
+    const res = await fetch(`${BASE_URL}/auth/jwt/login`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -77,7 +77,7 @@ export const updateUser = async ({name, email}) => {
       body: JSON.stringify({name, email})
     });
 
-    const data = checkAnswer(res);
+    const data = await checkAnswer(res);
     return data;
   } catch (error) {
     return Promise.reject(error);

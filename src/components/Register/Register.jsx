@@ -77,7 +77,7 @@ const Register = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactiv
             {isLoader ? "Регистрация" : "Зарегистрироваться"}
           </button>
         </form>
-        <p className="register__question noselect">Уже зарегистрированы? <Link to="/signin" className="register__link link">Войти</Link></p>
+        <p className="register__question noselect">Уже зарегистрированы? <Link to="/auth/jwt/login" className="register__link link">Войти</Link></p>
       </section>
     </main>
   )
