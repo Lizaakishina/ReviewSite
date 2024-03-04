@@ -31,7 +31,7 @@ const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive})
   return (
     <main>
       <section className="login">
-      <Link to="/profile" className="link login__linkLogo">
+      <Link to="/users/me" className="link login__linkLogo">
         <img src={logo} className="login__logo" alt='логотип' />
       </Link>
         <h2 className="login__hello noselect">Рады видеть!</h2>

@@ -6,6 +6,7 @@ import SubjectDetails from '../SubjectDetails/SubjectDetails';
 import TaskDetails from '../TaskDetails/TaskDetails';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Preloader from '../Preloader/Preloader';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 //реакт
 import { useEffect, useState } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
@@ -18,7 +19,7 @@ import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false)
-  const [currentUser, setCurrentUser] = useState({_id: '', name: '', email: ''});
+  const [currentUser, setCurrentUser] = useState({id: '', username: '', email: ''});
   const [isLoaderPage, setIsLoaderPage] = useState(true);
   const [isLoader, setIsLoader] = useState(false);
   const [errorMessageApi, setErrorMessageApi] = useState('');
@@ -111,25 +112,36 @@ const App = () => {
         <LoginContext.Provider value={loggedIn}>
           <Switch>
             <Route exact path="/">
-              <Redirect to="/auth/jwt/login" />
-            </Route>
-            <Route exact path="/users/me" onSignOut={handleSignOut} errorMessageApi={errorMessageApi} isLoader={isLoader}>
               <Main />
             </Route>
-            <Route path="/signup">
-              <Register onSubmit={handleRegister} errorMessageApi={errorMessageApi} isLoader={isLoader} isButtonInactive={isButtonInactive}/>
+            <ProtectedRoute
+              path="/users/me"
+              onSignOut={handleSignOut}
+              errorMessageApi={errorMessageApi}
+              isLoader={isLoader}>
+            </ProtectedRoute>
+            <Route path="/auth/register">
+              <Register
+                onSubmit={handleRegister}
+                errorMessageApi={errorMessageApi}
+                isLoader={isLoader}
+                isButtonInactive={isButtonInactive}/>
             </Route>
             <Route path="/auth/jwt/login">
-              <Login onSubmit={handleLogin} errorMessageApi={errorMessageApi} isLoader={isLoader} isButtonInactive={isButtonInactive}/>
+              <Login
+                onSubmit={handleLogin}
+                errorMessageApi={errorMessageApi}
+                isLoader={isLoader}
+                isButtonInactive={isButtonInactive}/>
             </Route>
-            <Route path="/subject/:id" render={() =>
+            <ProtectedRoute path="/subject/:id" render={() =>
               <SubjectDetails />
             }>
-            </Route>
-            <Route path="/task/:id" render={() =>
+            </ProtectedRoute>
+            <ProtectedRoute path="/task/:id" render={() =>
               <TaskDetails />
             }>
-            </Route>
+            </ProtectedRoute>
             <Route path="*">
               <PageNotFound />
             </Route>

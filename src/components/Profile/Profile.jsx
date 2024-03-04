@@ -1,3 +1,4 @@
+import Header from "../Header/Header";
 import Subject from '../Subject/Subject';
 import './Profile.css';
 import { memo, useCallback, useContext, useEffect } from "react";
@@ -35,7 +36,7 @@ const subjectData = [
 const Profile = ({onSignOut, onUpdateUser, errorMessageApi, isButtonInactive}) => {
   const currentUser = useContext(CurrentUserContext);
   const { values, handleChange, errors, isValid, resetForm } = useValidation();
-  const isButtonActive = (isValid && (currentUser.name !== values.name || currentUser.email !== values.email));
+  const isButtonActive = (isValid && (currentUser.username !== values.username || currentUser.email !== values.email));
 
   useEffect(() => {
     resetForm(currentUser);
@@ -57,6 +58,8 @@ const Profile = ({onSignOut, onUpdateUser, errorMessageApi, isButtonInactive}) =
   }, [values]);
 
   return (
+    <>
+    <Header loggedIn={true}/>
     <main>
       <section className="profile">
           <h2 className="profile__hello">Привет, {currentUser.username}!</h2>
@@ -110,6 +113,7 @@ const Profile = ({onSignOut, onUpdateUser, errorMessageApi, isButtonInactive}) =
       ))}
     </section>
     </main>
+    </>
   )
 }
 

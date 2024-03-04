@@ -12,7 +12,7 @@ const Header = () => {
       {loggedIn? <>
           <div className="header__nav">
             <div className="header__nav header__nav_type_acс">
-              <NavLink to="/profile" className="link header__link_type_acc">Аккаунт</NavLink>
+              <NavLink to="/users/me" className="link header__link_type_acc">Аккаунт</NavLink>
               <div className="header__chelbox">
                 <img src={chel} className="header__chel" alt='человечек'/>
               </div>
@@ -21,7 +21,7 @@ const Header = () => {
         </>
         :<>
           <div className="header__nav">
-            <Link to="/signup" className="link header__link">Регистрация</Link>
+            <Link to="/auth/register" className="link header__link">Регистрация</Link>
             <Link to="/auth/jwt/login" className="link header__link header__link_type_signin">Войти</Link>
           </div>
         </>
