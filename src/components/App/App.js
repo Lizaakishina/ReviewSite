@@ -84,9 +84,9 @@ const App = () => {
   const handleGetUser = async (token) => {
     try {
       const user = await getUser(token);
-      if(user.name) {
+      if(user.email) {
         setLoggedIn(true);
-        setCurrentUser({_id: user._id, name: user.name, email: user.email});
+        setCurrentUser({id: user.id, email: user.email, is_active: user.is_active, is_superuser: user.is_superuser, is_verified: user.is_verified, username: user.username, first_name: user.first_name, last_name: user.last_name, is_teacher: user.is_teacher});
         setIsLoaderPage(false);
       } else {
         handleSignOut();
@@ -103,7 +103,7 @@ const App = () => {
     sessionStorage.removeItem(CHECKBOX);
     setLoggedIn(false);
     setIsButtonInactive(false);
-    setCurrentUser({_id: '', name: '', email: ''});
+    setCurrentUser({id: '', username: '', email: ''});
   }
 
     return (isLoaderPage ? <Preloader /> :
@@ -113,7 +113,7 @@ const App = () => {
             <Route exact path="/">
               <Redirect to="/auth/jwt/login" />
             </Route>
-            <Route exact path="/profile">
+            <Route exact path="/users/me" onSignOut={handleSignOut} errorMessageApi={errorMessageApi} isLoader={isLoader}>
               <Main />
             </Route>
             <Route path="/signup">

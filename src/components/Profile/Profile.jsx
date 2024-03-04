@@ -1,5 +1,8 @@
 import Subject from '../Subject/Subject';
 import './Profile.css';
+import { memo, useCallback, useContext, useEffect } from "react";
+import { CurrentUserContext } from '../../context/CurrentUserContext';
+import { useValidation } from '../../hook/useValidation';
 
 const subjectData = [
   {
@@ -29,8 +32,73 @@ const subjectData = [
   },
 ]
 
-const Profile = () => {
+const Profile = ({onSignOut, onUpdateUser, errorMessageApi, isButtonInactive}) => {
+  const currentUser = useContext(CurrentUserContext);
+  const { values, handleChange, errors, isValid, resetForm } = useValidation();
+  const isButtonActive = (isValid && (currentUser.name !== values.name || currentUser.email !== values.email));
+
+  useEffect(() => {
+    resetForm(currentUser);
+  }, [resetForm, currentUser])
+
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+    onUpdateUser({
+      id: 0,
+      email: values.email,
+      is_active: true,
+      is_superuser: false,
+      is_verified: false,
+      username: values.username,
+      first_name: values.first_name,
+      last_name: values.last_name,
+      is_teacher: true
+    });
+  }, [values]);
+
   return (
+    <main>
+      <section className="profile">
+          <h2 className="profile__hello">Привет, {currentUser.username}!</h2>
+          <div className="profile__container">
+            <form className="form profile__form" name="profileEdit" onSubmit={handleSubmit} noValidate>
+              <fieldset className="profile__flexbox">
+                <label htmlFor="name" className="profile__text">Имя</label>
+                <input
+                  className="profile__input"
+                  type="text" id="name"
+                  name="first_name"
+                  value={values.first_name || currentUser.first_name}
+                  minLength="4"
+                  maxLength="40"
+                  onChange={handleChange}
+                  required
+                />
+                <span className={`form__inputError ${!!errors.name && 'form__inputError_active'}`}>{errors.name}</span>
+              </fieldset>
+              <div className="profile__line"></div>
+              <fieldset className="profile__flexbox">
+                <label htmlFor="email" className="profile__text">E-mail</label>
+                <input
+                  className="profile__input"
+                  type="email" id="email"
+                  name="email"
+                  value={values.email || currentUser.email}
+                  minLength="4"
+                  maxLength="40"
+                  onChange={handleChange}
+                  required
+                />
+                <span className={`form__input-error ${!!errors.email && 'form__input-error_active'}`}>{errors.email}</span>
+              </fieldset>
+              <span className={`profile__errorMessage ${!!errorMessageApi && "profile__errorMessage_active"}`}>{errorMessageApi}</span>
+              <button className={`button profile__edit ${isButtonActive && "profile__edit_active"}`} disabled={!isButtonActive}>
+                {isButtonInactive ? "Сохранение..." : "Редактировать"}
+              </button>
+            </form>
+          </div>
+          <button type="button" className="button profile__exit" onClick={onSignOut}>Выйти из аккаунта</button>
+        </section>
     <section className="subjects">
       {subjectData.map((subject) => (
         <Subject
@@ -41,7 +109,8 @@ const Profile = () => {
         />
       ))}
     </section>
+    </main>
   )
 }
 
-export default Profile
+export default memo(Profile)

@@ -63,7 +63,7 @@ export const getUser = async (token) => {
   }
 }
 
-export const updateUser = async ({name, email}) => {
+export const updateUser = async ({id, email, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher}) => {
   try {
     const res = await fetch(`${BASE_URL}/users/me`, {
       method: 'PATCH',
@@ -72,7 +72,7 @@ export const updateUser = async ({name, email}) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem(JWT)}`
       },
-      body: JSON.stringify({name, email})
+      body: JSON.stringify({id, email, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher})
     });
     const data = await checkAnswer(res);
     return data;
