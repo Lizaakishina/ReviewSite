@@ -66,11 +66,12 @@ const Profile = ({onSignOut, onUpdateUser, errorMessageApi, isButtonInactive}) =
           <div className="profile__container">
             <form className="form profile__form" name="profileEdit" onSubmit={handleSubmit} noValidate>
               <fieldset className="profile__flexbox">
-                <label htmlFor="name" className="profile__text">Имя</label>
+                <label htmlFor="name" className="profile__text">Username:</label>
                 <input
                   className="profile__input"
+                  placeholder="Введите для изменения"
                   type="text" id="name"
-                  name="first_name"
+                  name="username"
                   value={values.first_name || currentUser.first_name}
                   minLength="4"
                   maxLength="40"
@@ -80,21 +81,6 @@ const Profile = ({onSignOut, onUpdateUser, errorMessageApi, isButtonInactive}) =
                 <span className={`form__inputError ${!!errors.name && 'form__inputError_active'}`}>{errors.name}</span>
               </fieldset>
               <div className="profile__line"></div>
-              <fieldset className="profile__flexbox">
-                <label htmlFor="email" className="profile__text">E-mail</label>
-                <input
-                  className="profile__input"
-                  type="email" id="email"
-                  name="email"
-                  value={values.email || currentUser.email}
-                  minLength="4"
-                  maxLength="40"
-                  onChange={handleChange}
-                  required
-                />
-                <span className={`form__input-error ${!!errors.email && 'form__input-error_active'}`}>{errors.email}</span>
-              </fieldset>
-              <span className={`profile__errorMessage ${!!errorMessageApi && "profile__errorMessage_active"}`}>{errorMessageApi}</span>
               <button className={`button profile__edit ${isButtonActive && "profile__edit_active"}`} disabled={!isButtonActive}>
                 {isButtonInactive ? "Сохранение..." : "Редактировать"}
               </button>

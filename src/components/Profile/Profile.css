@@ -35,6 +35,7 @@
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
+  align-self: center;
   margin: 0;
 }
 
@@ -42,15 +43,11 @@
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;
-  padding: 0;
+  padding: 10px;
   outline: none;
   border: none;
   text-align: end;
-  width: 50%;
-}
-
-.profile__input:focus {
-  border-bottom: 1px solid #2be080;
+  width: 100%;
 }
 
 .form__inputError {
@@ -87,7 +84,7 @@
 }
 
 .profile__line {
-  margin: 16px 0 17px 0;
+  margin: 10px 0 10px;
   border-bottom: 1px solid #e8e8e8;
 }
 
@@ -95,16 +92,16 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
-  margin: 220px 0 0 0;
+  margin: 120px 0 0 0;
   padding: 10px 0;
   width: 100%;
   border-radius: 3px;
   cursor: auto;
+  color: grey;
 }
 
 .profile__edit_active {
-  background: #2be080;
-  color: #fff;
+  color: #c691f0;
 }
 
 .profile__exit {
