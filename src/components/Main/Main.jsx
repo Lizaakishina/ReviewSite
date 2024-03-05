@@ -7,6 +7,7 @@ import './Main.css';
 const Main = ({loggedIn}) => {
     return (
       <>
+        <Header loggedIn={loggedIn}/>
         <main>
           <div className="decor1"></div>
           <div className="decor2"></div>

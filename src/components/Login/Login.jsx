@@ -64,7 +64,7 @@ const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive})
             {isLoader ? "Выполняется вход..." : "Войти"}
           </button>
         </form>
-        <p className="login__ask noselect">Ещё не зарегистрированы? <Link to="/signup" className="login__link link">Регистрация</Link></p>
+        <p className="login__ask noselect">Ещё не зарегистрированы? <Link to="/auth/register" className="login__link link">Регистрация</Link></p>
       </section>
     </main>
   )

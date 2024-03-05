@@ -15,7 +15,7 @@ import { JWT, CHECKBOX, REGISTER_ERROR_MESSAGE } from '../../utils/constants';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { LoginContext } from '../../context/LoginContext';
 import { getUser, login, register } from '../../utils/api';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { NavLink, Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -26,14 +26,15 @@ const App = () => {
   const [isButtonInactive, setIsButtonInactive] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem(JWT);
+    let token = localStorage.getItem(JWT);
     if (token) {
       handleGetUser(token);
     } else {
-      handleSignOut();
-      setIsLoaderPage(false);
+      let JWT = 'newlyGeneratedJWT';
+      localStorage.setItem('JWT', JWT);
+      handleGetUser(JWT);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     if(loggedIn) {

@@ -49,7 +49,9 @@ export const login = async ({ username, password }) => {
 
 export const getUser = async (token) => {
   try {
+
     const res = await fetch(`${BASE_URL}/users/me`, {
+      method: "GET",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
