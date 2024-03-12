@@ -1,12 +1,11 @@
 import { useCallback, useContext, useEffect } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 import { useValidation } from '../../hook/useValidation';
 import { LoginContext } from '../../context/LoginContext';
 import { EMAIL_PATTERN } from '../../utils/constants';
 import Fieldset from '../Fieldset/Fieldset';
 import logo from '../../images/logo.svg';
 import './Login.css';
-import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive}) => {
   const { values, handleChange, errors, isValid, resetForm } = useValidation();
@@ -32,9 +31,7 @@ const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive})
   return (
     <main>
       <section className="login">
-      <Link to={loggedIn ? "/users/me" : "/auth/jwt/login"} className="link login__linkLogo">
-        <img src={logo} className="login__logo" alt='логотип' />
-      </Link>
+        <img src={logo} className="login__logo login__linkLogo" alt='логотип' />
         <h2 className="login__hello noselect">Рады видеть!</h2>
         <form className="login__form form" onSubmit={handleSubmit} noValidate method="post">
           <Fieldset
@@ -63,6 +60,7 @@ const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive})
           <span className={`login__errorMessage ${!!errorMessageApi && "login__errorMessage_active"}`}>{errorMessageApi}</span>
           <button type="submit" className={`form__button ${!isValid && "form__button_inactive"}`} disabled={!isValid && !isButtonInactive}>
             {isLoader ? "Выполняется вход..." : "Войти"}
+            <NavLink to="/users/me" className="link header__link_type_acc"></NavLink>
           </button>
         </form>
         <p className="login__ask noselect">Ещё не зарегистрированы? <Link to="/auth/register" className="login__link link">Регистрация</Link></p>

@@ -17,7 +17,7 @@ import { LoginContext } from '../../context/LoginContext';
 import { getUser, login, register } from '../../utils/api';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
-const App = () => {
+const App = (history) => {
   const [loggedIn, setLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState({id: '', username: '', email: ''});
   const [isLoaderPage, setIsLoaderPage] = useState(true);
