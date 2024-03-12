@@ -2,6 +2,7 @@
 import Main from '../Main/Main';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
+import Profile from '../Profile/Profile';
 import SubjectDetails from '../SubjectDetails/SubjectDetails';
 import TaskDetails from '../TaskDetails/TaskDetails';
 import PageNotFound from '../PageNotFound/PageNotFound';
@@ -11,11 +12,10 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { useEffect, useState } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 //контексты и утилиты
-import { JWT, CHECKBOX, REGISTER_ERROR_MESSAGE } from '../../utils/constants';
+import { CHECKBOX, REGISTER_ERROR_MESSAGE } from '../../utils/constants';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { LoginContext } from '../../context/LoginContext';
 import { getUser, login, register } from '../../utils/api';
-import { NavLink, Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -26,19 +26,18 @@ const App = () => {
   const [isButtonInactive, setIsButtonInactive] = useState(false);
 
   useEffect(() => {
-    let token = localStorage.getItem(JWT);
+    let token = localStorage.getItem('accessToken');
     if (token) {
       handleGetUser(token);
     } else {
-      let JWT = 'newlyGeneratedJWT';
-      localStorage.setItem('JWT', JWT);
-      handleGetUser(JWT);
+      handleSignOut();
+      setIsLoaderPage(false);
     }
   }, []);
 
   useEffect(() => {
     if(loggedIn) {
-      handleGetUser(localStorage.getItem(JWT))
+      handleGetUser(localStorage.getItem('accessToken'))
     } else {
 
     }
@@ -69,9 +68,9 @@ const App = () => {
       setIsLoader(true);
       setIsButtonInactive(true);
       const res = await login({username, password});
-      localStorage.setItem(JWT, res.token);
+      localStorage.setItem('accessToken', res.token);
       const user = await getUser(res.token);
-      setCurrentUser({_id: user._id, name: user.name, email: user.email});
+      setCurrentUser({id: user.id, name: user.name, email: user.email});
       setLoggedIn(true);
     } catch (error) {
       setLoggedIn(false);
@@ -83,9 +82,10 @@ const App = () => {
     }
   }
 
-  const handleGetUser = async (token) => {
+  const handleGetUser = async () => {
     try {
-      const user = await getUser(token);
+      const accessToken = localStorage.getItem('accessToken');
+      const user = await getUser(accessToken);
       if(user.email) {
         setLoggedIn(true);
         setCurrentUser({id: user.id, email: user.email, is_active: user.is_active, is_superuser: user.is_superuser, is_verified: user.is_verified, username: user.username, first_name: user.first_name, last_name: user.last_name, is_teacher: user.is_teacher});
@@ -101,7 +101,7 @@ const App = () => {
   }
 
   const handleSignOut = () => {
-    localStorage.removeItem(JWT);
+    localStorage.removeItem('accessToken');
     sessionStorage.removeItem(CHECKBOX);
     setLoggedIn(false);
     setIsButtonInactive(false);
@@ -112,11 +112,9 @@ const App = () => {
       (<CurrentUserContext.Provider value={currentUser}>
         <LoginContext.Provider value={loggedIn}>
           <Switch>
-            <Route exact path="/">
-              <Main />
-            </Route>
             <ProtectedRoute
               path="/users/me"
+              component={Profile}
               onSignOut={handleSignOut}
               errorMessageApi={errorMessageApi}
               isLoader={isLoader}>
@@ -135,14 +133,14 @@ const App = () => {
                 isLoader={isLoader}
                 isButtonInactive={isButtonInactive}/>
             </Route>
-            <ProtectedRoute path="/subject/:id" render={() =>
+            <Route path="/subject/:id" render={() =>
               <SubjectDetails />
             }>
-            </ProtectedRoute>
-            <ProtectedRoute path="/task/:id" render={() =>
+            </Route>
+            <Route path="/task/:id" render={() =>
               <TaskDetails />
             }>
-            </ProtectedRoute>
+            </Route>
             <Route path="*">
               <PageNotFound />
             </Route>

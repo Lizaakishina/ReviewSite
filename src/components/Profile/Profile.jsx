@@ -1,6 +1,7 @@
 import Header from "../Header/Header";
 import Subject from '../Subject/Subject';
 import './Profile.css';
+import '../Main/Main.css';
 import { memo, useCallback, useContext, useEffect } from "react";
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { useValidation } from '../../hook/useValidation';
@@ -33,7 +34,7 @@ const subjectData = [
   },
 ]
 
-const Profile = ({onSignOut, onUpdateUser, errorMessageApi, isButtonInactive}) => {
+const Profile = ({onSignOut, onUpdateUser, isButtonInactive}) => {
   const currentUser = useContext(CurrentUserContext);
   const { values, handleChange, errors, isValid, resetForm } = useValidation();
   const isButtonActive = (isValid && (currentUser.username !== values.username || currentUser.email !== values.email));
@@ -62,6 +63,10 @@ const Profile = ({onSignOut, onUpdateUser, errorMessageApi, isButtonInactive}) =
     <Header loggedIn={true}/>
     <main>
       <section className="profile">
+          <div className="decor1"></div>
+          <div className="decor2"></div>
+          <div className="decor3"></div>
+          <div className="decor4"></div>
           <h2 className="profile__hello">Привет, {currentUser.username}!</h2>
           <div className="profile__container">
             <form className="form profile__form" name="profileEdit" onSubmit={handleSubmit} noValidate>

@@ -41,21 +41,24 @@ export const login = async ({ username, password }) => {
       body: formData
     });
     const data = await checkAnswer(res);
+    const accessToken = data.access_token;
+
+    localStorage.setItem('accessToken', accessToken);
     return data;
   } catch (error) {
     return Promise.reject(error);
   }
 }
 
-export const getUser = async (token) => {
+export const getUser = async () => {
   try {
-
+    const accessToken = localStorage.getItem('accessToken');
     const res = await fetch(`${BASE_URL}/users/me`, {
       method: "GET",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer ${accessToken}`
       }
     })
     const data = await checkAnswer(res);
@@ -72,7 +75,7 @@ export const updateUser = async ({id, email, is_active, is_superuser, is_verifie
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem(JWT)}`
+        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
       },
       body: JSON.stringify({id, email, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher})
     });

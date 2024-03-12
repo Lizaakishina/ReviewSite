@@ -46,15 +46,12 @@
 .header__chel {
   width: 12px;
   height: 14px;
+  background-color: transparent;
 }
 
 @media screen and (max-width: 780px) {
   .header {
     padding: 0 30px;
-  }
-
-  .header__nav_type_acс {
-    display: none;
   }
 }
 
