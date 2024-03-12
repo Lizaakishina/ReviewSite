@@ -45,7 +45,7 @@ const TaskDataModule2 = [
 const SubjectDetails = () => {
   return (
     <section className="subjectDetails">
-      <Link to="/profile" className="link subjectDetails__linkLogo">
+      <Link to="/users/me" className="link subjectDetails__linkLogo">
         <img src={logo} alt='логотип' />
         <p className="subjectDetails__text">&larr;</p>
         <p className="subjectDetails__text">Назад</p>

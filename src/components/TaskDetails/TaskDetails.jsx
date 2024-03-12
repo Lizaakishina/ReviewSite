@@ -48,7 +48,7 @@ const TaskDetails = () => {
 
   return (
     <section className="taskDetails">
-      <button type="button" onClick={() => history.goBack()} to="/profile" className="link taskDetails__linkLogo">
+      <button type="button" onClick={() => history.goBack()} to="/users/me" className="link taskDetails__linkLogo">
         <img className="taskDetails__linkLogo" src={logo} alt='логотип' />
         <p className="taskDetails__text">&larr;</p>
         <p className="taskDetails__text">Назад</p>

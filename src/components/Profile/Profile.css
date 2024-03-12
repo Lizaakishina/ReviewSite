@@ -1,5 +1,5 @@
 .profile {
-  padding: 74px 0 70px;
+  padding: 0 0 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,103 +12,6 @@
   margin: 0 0 123px 0;
 }
 
-.profile__container {
-  width: 410px;
-}
-
-.profile__form {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.profile__flexbox {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  padding: 0;
-  border: none;
-  width: 100%;
-  position: relative;
-}
-
-.profile_edit-username {
-  display: flex;
-  flex-direction: row;
-}
-
-
-.profile__text {
-  font-weight: 500;
-  font-size: 11px;
-  line-height: 13px;
-  align-self: center;
-  margin: 0;
-}
-
-.profile__input {
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 13px;
-  padding: 10px;
-  outline: none;
-  border: none;
-  text-align: end;
-  width: 100%;
-}
-
-.form__inputError {
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 12px;
-  color: #ee3465;
-  width: 70%;
-  opacity: 0;
-  margin: 0px;
-}
-
-.form__inputError_active {
-  opacity: 1;
-}
-
-.profile__errorMessage {
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 12px;
-  color: #ee3465;
-  width: 100%;
-  position: absolute;
-  bottom: 65px;
-  left: 0;
-  opacity: 0;
-  text-align: center;
-}
-
-.profile__errorMessage_active {
-  opacity: 1;
-}
-
-.profile__line {
-  margin: 10px 0 10px;
-  border-bottom: 1px solid #e8e8e8;
-}
-
-.profile__edit {
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 16px;
-  margin: 120px 0 0 0;
-  padding: 10px 0;
-  width: 100%;
-  border-radius: 3px;
-  cursor: auto;
-  color: grey;
-}
-
-.profile__edit_active {
-  color: #c691f0;
-}
-
 .profile__exit {
   font-weight: 500;
   font-size: 13px;
@@ -118,36 +21,14 @@
 }
 
 @media screen and (max-width: 780px) {
-  .profile {
-    padding: 236px 0 269px;
-  }
-
   .profile__hello {
     margin: 0 0 96px 0;
-  }
-
-  .profile__edit {
-    margin: 210px 0 0 0;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .profile {
-    padding: 70px 0 40px;
-  }
-
   .profile__hello {
     margin: 0 0 80px 0;
-  }
-
-  .profile__container {
-    width: 260px;
-  }
-
-  .profile__edit {
-    font-size: 12px;
-    line-height: 15px;
-    margin: 379px 0 0 0;
   }
 
   .profile__exit {

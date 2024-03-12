@@ -6,13 +6,14 @@ import { EMAIL_PATTERN } from '../../utils/constants';
 import Fieldset from '../Fieldset/Fieldset';
 import logo from '../../images/logo.svg';
 import './Login.css';
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive}) => {
   const { values, handleChange, errors, isValid, resetForm } = useValidation();
   const loggedIn = useContext(LoginContext);
 
   useEffect(() => {
-    loggedIn && history.push('/');
+    loggedIn && history.push('/users/me');
   }, [])
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive})
   return (
     <main>
       <section className="login">
-      <Link to="/users/me" className="link login__linkLogo">
+      <Link to={loggedIn ? "/users/me" : "/auth/jwt/login"} className="link login__linkLogo">
         <img src={logo} className="login__logo" alt='логотип' />
       </Link>
         <h2 className="login__hello noselect">Рады видеть!</h2>

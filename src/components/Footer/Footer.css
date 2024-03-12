@@ -40,11 +40,6 @@
   align-items: center;
 }
 
-.footer__yandex {
-  margin: 0;
-  padding: 0;
-}
-
 .footer__link {
   color: #000;
   text-decoration: none;

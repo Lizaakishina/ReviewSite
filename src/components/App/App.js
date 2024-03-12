@@ -1,5 +1,4 @@
 //компоненты сайта
-import Main from '../Main/Main';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
@@ -12,7 +11,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { useEffect, useState } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 //контексты и утилиты
-import { CHECKBOX, REGISTER_ERROR_MESSAGE } from '../../utils/constants';
+import { JWT, CHECKBOX, REGISTER_ERROR_MESSAGE } from '../../utils/constants';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { LoginContext } from '../../context/LoginContext';
 import { getUser, login, register } from '../../utils/api';
@@ -68,8 +67,7 @@ const App = () => {
       setIsLoader(true);
       setIsButtonInactive(true);
       const res = await login({username, password});
-      localStorage.setItem('accessToken', res.token);
-      const user = await getUser(res.token);
+      const user = await getUser();
       setCurrentUser({id: user.id, name: user.name, email: user.email});
       setLoggedIn(true);
     } catch (error) {
@@ -84,9 +82,8 @@ const App = () => {
 
   const handleGetUser = async () => {
     try {
-      const accessToken = localStorage.getItem('accessToken');
-      const user = await getUser(accessToken);
-      if(user.email) {
+      const user = await getUser();
+      if (user.email) {
         setLoggedIn(true);
         setCurrentUser({id: user.id, email: user.email, is_active: user.is_active, is_superuser: user.is_superuser, is_verified: user.is_verified, username: user.username, first_name: user.first_name, last_name: user.last_name, is_teacher: user.is_teacher});
         setIsLoaderPage(false);

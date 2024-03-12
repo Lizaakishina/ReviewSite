@@ -35,7 +35,6 @@ export const login = async ({ username, password }) => {
     const formData = new FormData();
     formData.append('username', username);
     formData.append('password', password);
-
     const res = await fetch(`${BASE_URL}/auth/jwt/login`, {
       method: 'POST',
       body: formData
@@ -75,7 +74,7 @@ export const updateUser = async ({id, email, is_active, is_superuser, is_verifie
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        'Authorization': `Bearer ${localStorage.getItem(JWT)}`
       },
       body: JSON.stringify({id, email, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher})
     });

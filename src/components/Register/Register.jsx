@@ -12,7 +12,7 @@ const Register = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactiv
   const loggedIn = useContext(LoginContext);
 
   useEffect(() => {
-    loggedIn && history.push('/');
+    loggedIn && history.push('/users/me');
   }, [])
 
   useEffect(() => {

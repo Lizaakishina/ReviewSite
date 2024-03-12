@@ -5,6 +5,7 @@ import '../Main/Main.css';
 import { memo, useCallback, useContext, useEffect } from "react";
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { useValidation } from '../../hook/useValidation';
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 const subjectData = [
   {
@@ -60,52 +61,29 @@ const Profile = ({onSignOut, onUpdateUser, isButtonInactive}) => {
 
   return (
     <>
-    <Header loggedIn={true}/>
-    <main>
-      <section className="profile">
+      <Header loggedIn={true}/>
+      <main>
+        <section className="profile">
           <div className="decor1"></div>
           <div className="decor2"></div>
           <div className="decor3"></div>
           <div className="decor4"></div>
           <h2 className="profile__hello">Привет, {currentUser.username}!</h2>
-          <div className="profile__container">
-            <form className="form profile__form" name="profileEdit" onSubmit={handleSubmit} noValidate>
-              <fieldset className="profile__flexbox">
-                <div className="profile_edit-username">
-                  <label htmlFor="name" className="profile__text">Username:</label>
-                  <input
-                    className="profile__input"
-                    placeholder="Введите для изменения"
-                    type="text" id="name"
-                    name="username"
-                    value={values.first_name || currentUser.first_name}
-                    minLength="4"
-                    maxLength="40"
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <span className={`form__inputError ${!!errors.username && 'form__inputError_active'}`}>{errors.username}</span>
-              </fieldset>
-              <div className="profile__line"></div>
-              <button className={`button profile__edit ${isButtonActive && "profile__edit_active"}`} disabled={!isButtonActive}>
-                {isButtonInactive ? "Сохранение..." : "Редактировать"}
-              </button>
-            </form>
-          </div>
-          <button type="button" className="button profile__exit" onClick={onSignOut}>Выйти из аккаунта</button>
+          <NavLink to='/auth/jwt/login'>
+            <button type="button" className="button profile__exit" onClick={onSignOut}>Выйти из аккаунта</button>
+          </NavLink>
         </section>
-    <section className="subjects">
-      {subjectData.map((subject) => (
-        <Subject
-          key={subject.id}
-          id={subject.id}
-          title={subject.title}
-          semester={subject.semester}
-        />
-      ))}
-    </section>
-    </main>
+        <section className="subjects">
+          {subjectData.map((subject) => (
+            <Subject
+              key={subject.id}
+              id={subject.id}
+              title={subject.title}
+              semester={subject.semester}
+            />
+          ))}
+        </section>
+      </main>
     </>
   )
 }
