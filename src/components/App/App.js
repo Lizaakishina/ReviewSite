@@ -123,7 +123,7 @@ const App = () => {
                 isLoader={isLoader}
                 isButtonInactive={isButtonInactive}/>
             </Route>
-            <Route path="/auth/jwt/login">
+            <Route path="/">
               <Login
                 onSubmit={handleLogin}
                 errorMessageApi={errorMessageApi}
