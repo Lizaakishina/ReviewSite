@@ -68,10 +68,12 @@ const Profile = ({onSignOut, onUpdateUser, isButtonInactive}) => {
           <div className="decor2"></div>
           <div className="decor3"></div>
           <div className="decor4"></div>
+          <div className="profile__container">
+            <NavLink to='/auth/jwt/login'>
+              <button type="button" className="button profile__exit" onClick={onSignOut}>Выйти из аккаунта</button>
+            </NavLink>
+          </div>
           <h2 className="profile__hello">Привет, {currentUser.username}!</h2>
-          <NavLink to='/auth/jwt/login'>
-            <button type="button" className="button profile__exit" onClick={onSignOut}>Выйти из аккаунта</button>
-          </NavLink>
         </section>
         <section className="subjects">
           {subjectData.map((subject) => (

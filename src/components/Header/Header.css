@@ -1,6 +1,7 @@
 .header {
-  height: 74px;
+  height: 30px;
   padding: 0 70px;
+  margin-top: 10px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -8,7 +9,7 @@
 
 .header__nav {
   display: flex;
-  gap: 5px;
+  gap: 10px;
 }
 
 .header__link {
@@ -34,7 +35,6 @@
 }
 
 .header__chelbox {
-  width: 26px;
   height: 30px;
   background-color: transparent;
   display: flex;
@@ -58,10 +58,6 @@
 @media screen and (max-width: 480px) {
   .header {
     padding: 0 14px;
-  }
-
-  .header__nav {
-    gap: 26px;
   }
 
   .header__link {

@@ -1,15 +1,13 @@
 .profile {
-  padding: 0 0 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-.profile__hello {
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 29px;
-  margin: 0 0 123px 0;
+.profile__container {
+  padding: 0 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
 }
 
 .profile__exit {
@@ -17,23 +15,26 @@
   font-size: 13px;
   line-height: 16px;
   color: #ee3465;
-  margin: 16px 0 0 0;
+  margin: 0;
+}
+
+.profile__hello {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  align-self: center;
+  margin-top: 50px;
 }
 
 @media screen and (max-width: 780px) {
-  .profile__hello {
-    margin: 0 0 96px 0;
+  .profile__container {
+    padding: 0 30px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .profile__hello {
-    margin: 0 0 80px 0;
-  }
-
-  .profile__exit {
-    font-size: 12px;
-    line-height: 15px;
+  .profile__container {
+    padding: 0 14px;
   }
 }
 
