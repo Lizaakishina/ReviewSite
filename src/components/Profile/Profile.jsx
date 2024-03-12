@@ -35,29 +35,13 @@ const subjectData = [
   },
 ]
 
-const Profile = ({onSignOut, onUpdateUser, isButtonInactive}) => {
+const Profile = ({onSignOut}) => {
   const currentUser = useContext(CurrentUserContext);
-  const { values, handleChange, errors, isValid, resetForm } = useValidation();
-  const isButtonActive = (isValid && (currentUser.username !== values.username || currentUser.email !== values.email));
+  const { resetForm } = useValidation();
 
   useEffect(() => {
     resetForm(currentUser);
   }, [resetForm, currentUser])
-
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-    onUpdateUser({
-      id: 0,
-      email: values.email,
-      is_active: true,
-      is_superuser: false,
-      is_verified: false,
-      username: values.username,
-      first_name: values.first_name,
-      last_name: values.last_name,
-      is_teacher: true
-    });
-  }, [values]);
 
   return (
     <>

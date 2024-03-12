@@ -12,20 +12,6 @@
   gap: 10px;
 }
 
-.header__link {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  display: flex;
-  align-items: center;
-}
-
-.header__link_type_signin {
-  padding: 8px 20px;
-  background-color: #b892d7;
-  border-radius: 3px;
-}
-
 .header__link_type_acc {
   font-weight: 500;
   font-size: 14px;
@@ -58,9 +44,5 @@
 @media screen and (max-width: 480px) {
   .header {
     padding: 0 14px;
-  }
-
-  .header__link_type_signin {
-    padding: 5px 12px;
   }
 }

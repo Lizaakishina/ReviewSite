@@ -11,10 +11,11 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { useEffect, useState } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 //контексты и утилиты
-import { JWT, CHECKBOX, REGISTER_ERROR_MESSAGE } from '../../utils/constants';
+import { CHECKBOX, REGISTER_ERROR_MESSAGE } from '../../utils/constants';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { LoginContext } from '../../context/LoginContext';
 import { getUser, login, register } from '../../utils/api';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -109,12 +110,13 @@ const App = () => {
       (<CurrentUserContext.Provider value={currentUser}>
         <LoginContext.Provider value={loggedIn}>
           <Switch>
+            <Route exact path="/">
+              <Redirect push to="/auth/jwt/login"></Redirect>
+            </Route>
             <ProtectedRoute
               path="/users/me"
               component={Profile}
-              onSignOut={handleSignOut}
-              errorMessageApi={errorMessageApi}
-              isLoader={isLoader}>
+              onSignOut={handleSignOut}>
             </ProtectedRoute>
             <Route path="/auth/register">
               <Register
@@ -123,7 +125,7 @@ const App = () => {
                 isLoader={isLoader}
                 isButtonInactive={isButtonInactive}/>
             </Route>
-            <Route path="/">
+            <Route exact path="/auth/jwt/login">
               <Login
                 onSubmit={handleLogin}
                 errorMessageApi={errorMessageApi}
