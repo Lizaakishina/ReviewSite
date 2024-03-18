@@ -58,10 +58,10 @@ const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive})
             isValid={isValid}
           />
           <span className={`login__errorMessage ${!!errorMessageApi && "login__errorMessage_active"}`}>{errorMessageApi}</span>
-          <button type="submit" className={`form__button`}>
+          <button type="submit" className={`form__button ${!isValid && "form__button_inactive"} ${loggedIn && "form__button_none"}`}>
             {isLoader ? "Выполняется вход..." : loggedIn ? null : "Войти"}
             {loggedIn && (
-              <NavLink to="/users/me" className="form__button">К профилю</NavLink>
+              <NavLink to="/users/me" className="form__button-toprofile">К профилю</NavLink>
             )}
           </button>
         </form>

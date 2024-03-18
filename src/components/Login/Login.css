@@ -74,10 +74,27 @@
   border-radius: 3px;
 }
 
+.form__button-toprofile {
+  display: block;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #fff;
+  width: 100%;
+  padding: 13px 0 15px;
+  background-color: #b892d7;
+  border-radius: 3px;
+}
+
 .form__button_inactive {
   color: #000;
   cursor: auto;
   background-color: #f8f8f8;
+}
+
+.form__button_none {
+  background-color: transparent;
+  padding: 0;
 }
 
 @media screen and (max-width: 480px) {
