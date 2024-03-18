@@ -58,9 +58,11 @@ const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive})
             isValid={isValid}
           />
           <span className={`login__errorMessage ${!!errorMessageApi && "login__errorMessage_active"}`}>{errorMessageApi}</span>
-          <button type="submit" className={`form__button ${!isValid && "form__button_inactive"}`} disabled={!isValid && !isButtonInactive}>
-            {isLoader ? "Выполняется вход..." : "Войти"}
-            <NavLink to="/users/me" className="link header__link_type_acc"></NavLink>
+          <button type="submit" className={`form__button`}>
+            {isLoader ? "Выполняется вход..." : loggedIn ? null : "Войти"}
+            {loggedIn && (
+              <NavLink to="/users/me" className="form__button">К профилю</NavLink>
+            )}
           </button>
         </form>
         <p className="login__ask noselect">Ещё не зарегистрированы? <Link to="/auth/register" className="login__link link">Регистрация</Link></p>

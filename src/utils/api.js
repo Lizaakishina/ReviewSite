@@ -36,7 +36,7 @@ export const logout = async ({ id, username, password }) => {
     formData.append(' ', id);
     formData.append(' ', username);
     formData.append(' ', password);
-    const res = await fetch(`${BASE_URL}/auth/jwt/login`, {
+    const res = await fetch(`${BASE_URL}/auth/jwt/logout`, {
       method: 'POST',
       body: formData
     });
