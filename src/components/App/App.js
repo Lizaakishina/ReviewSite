@@ -14,7 +14,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { CHECKBOX, REGISTER_ERROR_MESSAGE } from '../../utils/constants';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { LoginContext } from '../../context/LoginContext';
-import { getUser, login, register } from '../../utils/api';
+import { login, logout, register, getUser, updateUser } from '../../utils/api';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const App = (history) => {
@@ -98,8 +98,21 @@ const App = (history) => {
     }
   }
 
-  const handleSignOut = () => {
+  const handleUpdateUser = async ({password, email, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher}) => {
+    try {
+      setIsLoader(true);
+      const user = await updateUser({password, email, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher});
+      setCurrentUser({password: user.password, email: user.email, is_active: user.is_active, is_superuser: user.is_superuser, is_verified: user.is_verified, username: user.username, first_name: user.first_name, last_name: user.last_name, is_teacher: user.is_teacher});
+    } catch (error) {
+      error.statusCode === 409 ? setErrorMessageApi(error.message) : setErrorMessageApi(error.message);
+    } finally {
+      setIsLoader(false);
+    }
+  }
+
+  const handleSignOut = async ({id, username, password}) => {
     localStorage.removeItem('accessToken');
+    logout({id, username, password});
     sessionStorage.removeItem(CHECKBOX);
     setLoggedIn(false);
     setIsButtonInactive(false);
@@ -116,7 +129,8 @@ const App = (history) => {
             <ProtectedRoute
               path="/users/me"
               component={Profile}
-              onSignOut={handleSignOut}>
+              onSignOut={handleSignOut}
+              onUpdateUser={handleUpdateUser}>
             </ProtectedRoute>
             <Route path="/auth/register">
               <Register
