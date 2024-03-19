@@ -110,9 +110,8 @@ const App = (history) => {
     }
   }
 
-  const handleSignOut = async ({id, username, password}) => {
-    localStorage.removeItem('accessToken');
-    logout({id, username, password});
+  const handleSignOut = async () => {
+    logout();
     sessionStorage.removeItem(CHECKBOX);
     setLoggedIn(false);
     setIsButtonInactive(false);

@@ -30,15 +30,16 @@ export const login = async ({ username, password }) => {
   }
 }
 
-export const logout = async ({ id, username, password }) => {
+export const logout = async () => {
   try {
-    const formData = new FormData();
-    formData.append(' ', id);
-    formData.append(' ', username);
-    formData.append(' ', password);
+    const accessToken = localStorage.getItem('accessToken');
     const res = await fetch(`${BASE_URL}/auth/jwt/logout`, {
       method: 'POST',
-      body: formData
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
+      }
     });
     const data = await checkAnswer(res);
     return data;
