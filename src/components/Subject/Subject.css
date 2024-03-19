@@ -38,8 +38,64 @@
   color: rgb(166, 166, 166);
 }
 
+.subject__container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
 .subject__name {
+  width: 80%;
   margin: 8px;
   font-size: 14px;
   font-weight: 400;
+}
+
+.subject__delete {
+  font-size: 25px;
+  margin-left: 10px;
+  background-color: transparent;
+}
+
+.confirmation-popup {
+  position: fixed;
+  width: 400px;
+  height: 150px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 5px;
+  border: 2px rgb(113, 113, 113) dotted;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  z-index: 10;
+}
+
+.confirmation-popup p {
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.confirmation-popup button {
+  margin: 10px 10px;
+  width: 70px;
+  padding: 8px 16px;
+  background-color: #f8f8f8;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 13px 0 15px;
+  border-radius: 3px;
+}
+
+.confirmation-popup button:hover {
+  background-color: #b892d7;
+  transition: .3s;
 }

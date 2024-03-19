@@ -7,7 +7,7 @@ import Fieldset from '../Fieldset/Fieldset';
 import logo from '../../images/logo.svg';
 import './Login.css';
 
-const Login = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactive}) => {
+const Login = ({history, onSubmit, errorMessageApi, isLoader }) => {
   const { values, handleChange, errors, isValid, resetForm } = useValidation();
   const loggedIn = useContext(LoginContext);
 

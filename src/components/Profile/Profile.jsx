@@ -1,11 +1,12 @@
+import { memo, useContext, useEffect, useCallback } from "react";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import Header from "../Header/Header";
 import Subject from '../Subject/Subject';
+import Fieldset from '../Fieldset/Fieldset';
 import './Profile.css';
 import '../Main/Main.css';
-import { memo, useCallback, useContext, useEffect } from "react";
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { useValidation } from '../../hook/useValidation';
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 const subjectData = [
   {
@@ -35,13 +36,23 @@ const subjectData = [
   },
 ]
 
-const Profile = ({onSignOut}) => {
+const Profile = ({onSignOut, onSubmit}) => {
   const currentUser = useContext(CurrentUserContext);
-  const { resetForm } = useValidation();
+  const { values, handleChange, errors, isValid, resetForm } = useValidation();
 
   useEffect(() => {
     resetForm(currentUser);
   }, [resetForm, currentUser])
+
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+
+    onSubmit({
+      id: values.id,
+      name: values.name,
+      teacher_id: values.teacher_id
+    })
+  }, [values]);
 
   return (
     <>
@@ -58,6 +69,20 @@ const Profile = ({onSignOut}) => {
             </NavLink>
           </div>
           <h2 className="profile__hello">Привет, {currentUser.username}!</h2>
+          <form className="profile__form form" onSubmit={handleSubmit} noValidate method="post">
+          <Fieldset
+            input = "name"
+            inputType = "name"
+            placeholder = "Название курса"
+            name="name"
+            minLength="4"
+            maxLength="40"
+            onChange={handleChange}
+            errors={errors}
+            isValid={isValid}
+          />
+          <button type="submit" className="profile__addcourse">Добавить курс</button>
+        </form>
         </section>
         <section className="subjects">
           {subjectData.map((subject) => (
