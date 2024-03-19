@@ -102,3 +102,23 @@ export const updateUser = async ({password, email, is_active, is_superuser, is_v
     return Promise.reject(error);
   }
 }
+
+export const createCourse = async ({ id, name, teacher_id }) => {
+  try {
+    const accessToken = localStorage.getItem('accessToken');
+    const res = await fetch(`${BASE_URL}/course`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
+      },
+      body: JSON.stringify({ id, name, teacher_id })
+    });
+    const data = await checkAnswer(res);
+    return data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}

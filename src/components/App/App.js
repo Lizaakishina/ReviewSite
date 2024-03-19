@@ -14,7 +14,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { CHECKBOX, REGISTER_ERROR_MESSAGE } from '../../utils/constants';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { LoginContext } from '../../context/LoginContext';
-import { login, logout, register, getUser, updateUser } from '../../utils/api';
+import { login, logout, register, getUser, updateUser, createCourse } from '../../utils/api';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const App = (history) => {
@@ -43,12 +43,12 @@ const App = (history) => {
     }
   }, [loggedIn])
 
-  const handleRegister = async ({email, password, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher}) => {
+  const handleRegister = async ({ email, password, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher }) => {
     try {
       setIsLoader(true);
       setIsButtonInactive(true);
-      const res = await register({email, password, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher});
-      handleLogin({username, password});
+      const res = await register({ email, password, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher });
+      handleLogin({ username, password });
     } catch (error) {
       if (error.statusCode === 400) {
         setErrorMessageApi(REGISTER_ERROR_MESSAGE)
@@ -63,13 +63,13 @@ const App = (history) => {
     }
   }
 
-  const handleLogin = async ({username, password}) => {
+  const handleLogin = async ({ username, password }) => {
     try {
       setIsLoader(true);
       setIsButtonInactive(true);
-      const res = await login({username, password});
+      const res = await login({ username, password });
       const user = await getUser();
-      setCurrentUser({id: user.id, name: user.name, email: user.email});
+      setCurrentUser({ id: user.id, name: user.name, email: user.email });
       setLoggedIn(true);
     } catch (error) {
       setLoggedIn(false);
@@ -86,7 +86,7 @@ const App = (history) => {
       const user = await getUser();
       if (user.email) {
         setLoggedIn(true);
-        setCurrentUser({id: user.id, email: user.email, is_active: user.is_active, is_superuser: user.is_superuser, is_verified: user.is_verified, username: user.username, first_name: user.first_name, last_name: user.last_name, is_teacher: user.is_teacher});
+        setCurrentUser({ id: user.id, email: user.email, is_active: user.is_active, is_superuser: user.is_superuser, is_verified: user.is_verified, username: user.username, first_name: user.first_name, last_name: user.last_name, is_teacher: user.is_teacher });
         setIsLoaderPage(false);
       } else {
         handleSignOut();
@@ -98,11 +98,11 @@ const App = (history) => {
     }
   }
 
-  const handleUpdateUser = async ({password, email, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher}) => {
+  const handleUpdateUser = async ({ password, email, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher }) => {
     try {
       setIsLoader(true);
-      const user = await updateUser({password, email, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher});
-      setCurrentUser({password: user.password, email: user.email, is_active: user.is_active, is_superuser: user.is_superuser, is_verified: user.is_verified, username: user.username, first_name: user.first_name, last_name: user.last_name, is_teacher: user.is_teacher});
+      const user = await updateUser({ password, email, is_active, is_superuser, is_verified, username, first_name, last_name, is_teacher });
+      setCurrentUser({ password: user.password, email: user.email, is_active: user.is_active, is_superuser: user.is_superuser, is_verified: user.is_verified, username: user.username, first_name: user.first_name, last_name: user.last_name, is_teacher: user.is_teacher });
     } catch (error) {
       error.statusCode === 409 ? setErrorMessageApi(error.message) : setErrorMessageApi(error.message);
     } finally {
@@ -115,7 +115,15 @@ const App = (history) => {
     sessionStorage.removeItem(CHECKBOX);
     setLoggedIn(false);
     setIsButtonInactive(false);
-    setCurrentUser({id: '', username: '', email: ''});
+    setCurrentUser({ id: '', username: '', email: '' });
+  }
+
+  const handleCreateCourse = async ({ id, name, teacher_id }) => {
+    try {
+      const data = await createCourse({ id, name, teacher_id });
+    } catch(error) {
+
+    }
   }
 
     return (isLoaderPage ? <Preloader /> :
@@ -129,7 +137,8 @@ const App = (history) => {
               path="/users/me"
               component={Profile}
               onSignOut={handleSignOut}
-              onUpdateUser={handleUpdateUser}>
+              onUpdateUser={handleUpdateUser}
+              onSubmit={handleCreateCourse}>
             </ProtectedRoute>
             <Route path="/auth/register">
               <Register
