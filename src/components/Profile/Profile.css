@@ -27,7 +27,7 @@
 }
 
 .profile__form {
-  width: 50%;
+  width: 400px;
   margin: 40px 0;
   position: relative;
   align-self: center;
@@ -38,7 +38,7 @@
   font-size: 14px;
   line-height: 17px;
   color: #000000;
-  width: 90%;
+  width: 95%;
   margin: 0;
   padding: 13px 0 15px;
   background-color: #f8f8f8;
@@ -61,6 +61,14 @@
 @media screen and (max-width: 480px) {
   .profile__container {
     padding: 0 14px;
+  }
+
+  .profile__form {
+    width: 300px;
+  }
+
+  .profile__addcourse {
+    width: 100%;
   }
 }
 
