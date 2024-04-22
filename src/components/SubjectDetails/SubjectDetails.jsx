@@ -1,4 +1,4 @@
-import { React, useCallback } from 'react';
+import { React, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Task from '../Task/Task';
 import Fieldset from '../Fieldset/Fieldset';
@@ -46,17 +46,33 @@ const TaskDataModule2 = [
 
 const SubjectDetails = ({onSubmit}) => {
   const { values, handleChange, errors, isValid } = useValidation();
+  const [tasksModule1, setTasksModule1] = useState(TaskDataModule1);
+  const [tasksModule2, setTasksModule2] = useState(TaskDataModule2);
+  const [selectedModule, setSelectedModule] = useState('Module1');
 
-  const handleSubmit = useCallback((e) => {
+
+  const handleAddTask = useCallback((e) => {
     e.preventDefault();
+
+    const newTask = {
+      id: tasksModule1.length + tasksModule2.length + 1,
+      title: values.name,
+    };
+
+    if (selectedModule === 'Module1') {
+      setTasksModule1((prevTasks) => [...prevTasks, newTask]);
+    } else if (selectedModule === 'Module2') {
+      setTasksModule2((prevTasks) => [...prevTasks, newTask]);
+    }
 
     onSubmit({
       course_id: values.course_id,
       name: values.name,
       text: values.text,
       language: values.language
-    })
-  }, [values]);
+    });
+  }, [values, tasksModule1, tasksModule2, selectedModule, onSubmit]);
+
 
   return (
     <section className="subjectDetails">
@@ -70,9 +86,7 @@ const SubjectDetails = ({onSubmit}) => {
       <div className="decor7"></div>
       <div className="decor8"></div>
       <div className="subject__list">
-        <div className="subject__container">
-          <h2 className="subject__module">Модуль 1</h2>
-          <form className="subject__form form" onSubmit={handleSubmit} noValidate method="post">
+        <form className="subject__form form" onSubmit={handleAddTask} noValidate method="post">
           <Fieldset
             input = "name"
             inputType = "name"
@@ -117,10 +131,16 @@ const SubjectDetails = ({onSubmit}) => {
             errors={errors}
             isValid={isValid}
           />
+          <select className="form__select" value={selectedModule} onChange={(e) => setSelectedModule(e.target.value)}>
+            <option value="Module1">Модуль 1</option>
+            <option value="Module2">Модуль 2</option>
+          </select>
           <button type="submit" className="subject__button">Добавить задание</button>
         </form>
+        <div className="subject__container">
+          <h2 className="subject__module">Модуль 1</h2>
         </div>
-        {TaskDataModule1.map((subject) => (
+        {tasksModule1.map((subject) => (
           <Task
             key={subject.id}
             id={subject.id}
@@ -130,7 +150,7 @@ const SubjectDetails = ({onSubmit}) => {
       </div>
       <div className="subject__list">
         <h2 className="subject__module">Модуль 2</h2>
-        {TaskDataModule2.map((subject) => (
+        {tasksModule2.map((subject) => (
           <Task
             key={subject.id}
             id={subject.id}
