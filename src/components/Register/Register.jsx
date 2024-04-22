@@ -26,12 +26,12 @@ const Register = ({history, onSubmit, errorMessageApi, isLoader, isButtonInactiv
       email: values.email,
       password: values.password,
       is_active: true,
-      is_superuser: false,
+      is_superuser: true,
       is_verified: false,
       username: values.username,
       first_name: values.first_name,
       last_name: values.last_name,
-      is_teacher: false
+      is_teacher: true
     })
   }, [values]);
 
