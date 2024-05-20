@@ -22,3 +22,7 @@
   align-self: center;
   font-size: 16px;
 }
+
+.taskDetails__file {
+  margin-top: 20px;
+}

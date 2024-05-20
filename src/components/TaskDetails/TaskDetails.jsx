@@ -4,44 +4,7 @@ import Accordion from '../Accordion/Accordion';
 import logo from '../../images/logo.svg';
 import './TaskDetails.css';
 
-const faqList = [
-  {
-    id: 1,
-    title: 'const [text, setNewText] = useState("");',
-  },
-  {
-    id: 2,
-    title: 'print("Hello")',
-  },
-  {
-    id: 3,
-    title: 'return 0',
-  },
-  {
-    id: 4,
-    title: 'import CopyToClipboard from "react"',
-  },
-  {
-    id: 5,
-    title: 'class Test:',
-  },
-  {
-    id: 6,
-    title: '  def __init__(self):',
-  },
-  {
-    id: 7,
-    title: '    pass',
-  },
-  {
-    id: 8,
-    title: 'for i in var_1:',
-  },
-  {
-  id: 9,
-    title: '  sum += i',
-  },
-]
+const faqList = []
 
 const TaskDetails = () => {
   let history = useHistory();
@@ -70,7 +33,7 @@ const TaskDetails = () => {
         <p className="taskDetails__text">&larr;</p>
         <p className="taskDetails__text">Назад</p>
       </button>
-      <input type="file" accept=".txt" onChange={handleFileUpload} />
+      <input type="file" className="taskDetails__file" accept=".txt" onChange={handleFileUpload} />
       <Accordion faqList={faqs}/>
     </section>
   )
