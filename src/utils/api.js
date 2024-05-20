@@ -123,6 +123,24 @@ export const createCourse = async ({ id, name, teacher_id }) => {
   }
 }
 
+export const getCourse = async () => {
+  try {
+    const accessToken = localStorage.getItem('accessToken');
+    const res = await fetch(`${BASE_URL}/course`, {
+      method: "GET",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
+      }
+    })
+    const data = await checkAnswer(res);
+    return data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
 export const createTask = async ({ course_id, name, text, language }) => {
   try {
     const accessToken = localStorage.getItem('accessToken');

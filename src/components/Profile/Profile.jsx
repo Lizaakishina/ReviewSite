@@ -8,7 +8,7 @@ import '../Main/Main.css';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { useValidation } from '../../hook/useValidation';
 
-const subjectData = [
+let subjectData = [
   {
     id: 1,
     title: "Технологии и методы программирования",
@@ -45,6 +45,17 @@ const Profile = ({onSignOut, onSubmit}) => {
     resetForm(currentUser);
   }, [resetForm, currentUser])
 
+  useEffect(() => {
+    const savedCourses = JSON.parse(localStorage.getItem('courses'));
+    if (savedCourses) {
+      setSubjects(savedCourses);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('courses', JSON.stringify(subjects));
+  }, [subjects]);
+  
   const handleAddSubject = useCallback((e) => {
     e.preventDefault();
 

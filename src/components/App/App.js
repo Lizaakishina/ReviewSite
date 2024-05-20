@@ -14,7 +14,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { CHECKBOX, REGISTER_ERROR_MESSAGE } from '../../utils/constants';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { LoginContext } from '../../context/LoginContext';
-import { login, logout, register, getUser, updateUser, createCourse, createTask } from '../../utils/api';
+import { login, logout, register, getUser, updateUser, createCourse, getCourse, createTask } from '../../utils/api';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const App = (history) => {
@@ -24,6 +24,7 @@ const App = (history) => {
   const [isLoader, setIsLoader] = useState(false);
   const [errorMessageApi, setErrorMessageApi] = useState('');
   const [isButtonInactive, setIsButtonInactive] = useState(false);
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     let token = localStorage.getItem('accessToken');
@@ -122,15 +123,31 @@ const App = (history) => {
     try {
       const data = await createCourse({ id, name, teacher_id });
     } catch(error) {
-
+      console.error(error);
     }
   }
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        let fetchedCourses = JSON.parse(localStorage.getItem('courses'));
+        if (!fetchedCourses) {
+          fetchedCourses = await getCourse();
+          localStorage.setItem('courses', JSON.stringify(fetchedCourses));
+        }
+        setCourses(fetchedCourses);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchCourses();
+  }, []);
 
   const handleCreateTask = async ({ course_id, name, text, language }) => {
     try {
       const data = await createTask({ course_id, name, text, language });
     } catch(error) {
-
+      console.error(error);
     }
   }
 
