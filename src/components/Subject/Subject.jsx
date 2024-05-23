@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Subject.css';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 function Subject({ id, title, semester, onDelete }) {
+  const currentUser = useContext(CurrentUserContext);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [isTeacher, setIsTeacher] = useState(false);
+
+  useEffect(() => {
+    setIsTeacher(currentUser.is_teacher);
+  }, [currentUser])
 
   return (
     <div className="subject">
@@ -12,11 +19,15 @@ function Subject({ id, title, semester, onDelete }) {
           <p className="subject__percent">Выполнено: 10%</p>
         </div>
         <p className="subject__semester">{`${semester} семестр`}</p>
-        </Link>
-        <div className="subject__container">
+      </Link>
+      <div className="subject__container">
+        <Link to={`/subject/` + id}>
           <p className="subject__name">{title}</p>
+        </Link>
+        {isTeacher && (
           <button className="subject__delete" onClick={() => setShowConfirmation(true)}>&#128465;</button>
-        </div>
+        )}
+      </div>
       {showConfirmation && (
         <div className="confirmation-popup">
           <p>Вы действительно хотите удалить эту карточку?</p>
