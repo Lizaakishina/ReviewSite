@@ -1,10 +1,11 @@
-import { React, useCallback, useState } from 'react';
+import { React, useCallback, useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Task from '../Task/Task';
 import Fieldset from '../Fieldset/Fieldset';
 import logo from '../../images/logo.svg';
 import './SubjectDetails.css';
 import { useValidation } from '../../hook/useValidation';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 const TaskDataModule1 = [
   {
@@ -45,11 +46,16 @@ const TaskDataModule2 = [
 ]
 
 const SubjectDetails = ({onSubmit}) => {
+  const currentUser = useContext(CurrentUserContext);
   const { values, handleChange, errors, isValid } = useValidation();
   const [tasksModule1, setTasksModule1] = useState(TaskDataModule1);
   const [tasksModule2, setTasksModule2] = useState(TaskDataModule2);
   const [selectedModule, setSelectedModule] = useState('Module1');
+  const [isTeacher, setIsTeacher] = useState(false);
 
+  useEffect(() => {
+    setIsTeacher(currentUser.is_teacher);
+  }, [ currentUser])
 
   const handleAddTask = useCallback((e) => {
     e.preventDefault();
@@ -86,7 +92,8 @@ const SubjectDetails = ({onSubmit}) => {
       <div className="decor7"></div>
       <div className="decor8"></div>
       <div className="subject__list">
-        <form className="subject__form form" onSubmit={handleAddTask} noValidate method="post">
+      {isTeacher && (
+      <form className="subject__form form" onSubmit={handleAddTask} noValidate method="post">
           <Fieldset
             input = "name"
             inputType = "name"
@@ -137,6 +144,7 @@ const SubjectDetails = ({onSubmit}) => {
           </select>
           <button type="submit" className="subject__button">Добавить задание</button>
         </form>
+        )}
         <div className="subject__container">
           <h2 className="subject__module">Модуль 1</h2>
         </div>

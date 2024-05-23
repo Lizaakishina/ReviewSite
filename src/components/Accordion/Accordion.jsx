@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect, useContext } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import Markdown from 'react-markdown'
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript';
 import { AccordionItem } from './AccordionItem';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 SyntaxHighlighter.registerLanguage('javascript', js);
 
 const Accordion = ({faqList}) => {
+  const currentUser = useContext(CurrentUserContext);
   const [openId, setId] = useState(null);
   const [text, setNewText] = useState("");
   const [isEditing, setEditing] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
+  const [isTeacher, setIsTeacher] = useState(false);
+
+  useEffect(() => {
+    setIsTeacher(currentUser.is_teacher);
+  }, [currentUser])
 
   const handleTimerClick = () => {
     setIsVisible(true);
@@ -24,8 +31,10 @@ const Accordion = ({faqList}) => {
   const setEditingState = () => {
     setEditing(isEditing => !isEditing)
   }
+
   return (
     <div>
+      {isTeacher && (
       <ol className="acc">
         {faqList.map((faqItem, id) => {
           return (
@@ -39,6 +48,8 @@ const Accordion = ({faqList}) => {
           )
         })}
       </ol>
+      )}
+      {isTeacher && (
       <div>
         {isEditing ? (
           <div className="acc__container">
@@ -101,7 +112,13 @@ const Accordion = ({faqList}) => {
           </div>
         )}
       </div>
-      <div className="acc__bth-contaier"><button className={`acc__bth-end noselect`} type="submit">Отправить отзыв</button></div>
+      )}
+      {isTeacher ? (
+        <div className="acc__bth-contaier-teacher"><button className={`acc__bth-end noselect`} type="submit">Отправить отзыв</button></div>
+      )
+      : (
+        <div className="acc__bth-contaier"><button className={`acc__bth-end noselect`} type="submit">Отправить задание</button></div>
+      )}
     </div>
   )
 }

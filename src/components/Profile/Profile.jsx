@@ -40,9 +40,11 @@ const Profile = ({onSignOut, onSubmit}) => {
   const currentUser = useContext(CurrentUserContext);
   const { values, handleChange, errors, isValid, resetForm } = useValidation();
   const [subjects, setSubjects] = useState(subjectData);
+  const [isTeacher, setIsTeacher] = useState(false);
 
   useEffect(() => {
     resetForm(currentUser);
+    setIsTeacher(currentUser.is_teacher);
   }, [resetForm, currentUser])
 
   useEffect(() => {
@@ -55,7 +57,7 @@ const Profile = ({onSignOut, onSubmit}) => {
   useEffect(() => {
     localStorage.setItem('courses', JSON.stringify(subjects));
   }, [subjects]);
-  
+
   const handleAddSubject = useCallback((e) => {
     e.preventDefault();
 
@@ -93,6 +95,7 @@ const Profile = ({onSignOut, onSubmit}) => {
             </NavLink>
           </div>
           <h2 className="profile__hello">Привет, {currentUser.username}!</h2>
+          {isTeacher && (
           <form className="profile__form form" onSubmit={handleAddSubject} noValidate method="post">
             <Fieldset
               input = "name"
@@ -118,6 +121,7 @@ const Profile = ({onSignOut, onSubmit}) => {
             />
             <button type="submit" className="profile__addcourse">Добавить курс</button>
           </form>
+          )}
         </section>
         <section className="subjects">
           {subjects.map((subject) => (
