@@ -16,7 +16,9 @@ function Subject({ id, title, semester, onDelete }) {
     <div className="subject">
       <Link to={`/subject/` + id}>
         <div className="subject__image">
-          <p className="subject__percent">Выполнено: 10%</p>
+          {!isTeacher && (
+            <p className="subject__percent">Выполнено: 10%</p>
+          )}
         </div>
         <p className="subject__semester">{`${semester} семестр`}</p>
       </Link>

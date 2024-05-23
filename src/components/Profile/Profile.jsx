@@ -7,34 +7,9 @@ import './Profile.css';
 import '../Main/Main.css';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { useValidation } from '../../hook/useValidation';
+import { getCourse } from "../../utils/api";
 
-let subjectData = [
-  {
-    id: 1,
-    title: "Технологии и методы программирования",
-    semester: "2",
-  },
-  {
-    id: 2,
-    title: "Электроника аппаратных средств защиты информации",
-    semester: "4",
-  },
-  {
-    id: 3,
-    title: "Схемотехника дискретных устройств",
-    semester: "4",
-  },
-  {
-    id: 4,
-    title: "Схемотехника аппаратных средств защиты информации",
-    semester: "5",
-  },
-  {
-    id: 5,
-    title: "Основы микро- и радиоэлектроники",
-    semester: "5",
-  },
-]
+let subjectData = []
 
 const Profile = ({onSignOut, onSubmit}) => {
   const currentUser = useContext(CurrentUserContext);
@@ -45,7 +20,8 @@ const Profile = ({onSignOut, onSubmit}) => {
   useEffect(() => {
     resetForm(currentUser);
     setIsTeacher(currentUser.is_teacher);
-  }, [resetForm, currentUser])
+    handleGetCourses();
+  }, [resetForm, currentUser]);
 
   useEffect(() => {
     const savedCourses = JSON.parse(localStorage.getItem('courses'));
@@ -79,6 +55,15 @@ const Profile = ({onSignOut, onSubmit}) => {
   const handleDeleteSubject = useCallback((id) => {
     setSubjects((prevSubjects) => prevSubjects.filter((subject) => subject.id !== id));
   }, []);
+
+  const handleGetCourses = async () => {
+    try {
+      const courses = await getCourse();
+      setSubjects(courses);
+    } catch (error) {
+      console.error('Ошибка при получении курсов:', error);
+    }
+  }
 
   return (
     <>
@@ -139,4 +124,4 @@ const Profile = ({onSignOut, onSubmit}) => {
   )
 }
 
-export default memo(Profile)
+export default memo(Profile);

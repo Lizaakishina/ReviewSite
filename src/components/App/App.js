@@ -24,7 +24,6 @@ const App = (history) => {
   const [isLoader, setIsLoader] = useState(false);
   const [errorMessageApi, setErrorMessageApi] = useState('');
   const [isButtonInactive, setIsButtonInactive] = useState(false);
-  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     let token = localStorage.getItem('accessToken');
@@ -126,22 +125,6 @@ const App = (history) => {
       console.error(error);
     }
   }
-
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        let fetchedCourses = JSON.parse(localStorage.getItem('courses'));
-        if (!fetchedCourses) {
-          fetchedCourses = await getCourse();
-          localStorage.setItem('courses', JSON.stringify(fetchedCourses));
-        }
-        setCourses(fetchedCourses);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchCourses();
-  }, []);
 
   const handleCreateTask = async ({ course_id, name, text, language }) => {
     try {

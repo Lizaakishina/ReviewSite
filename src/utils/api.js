@@ -106,7 +106,7 @@ export const updateUser = async ({password, email, is_active, is_superuser, is_v
 export const createCourse = async ({ id, name, teacher_id }) => {
   try {
     const accessToken = localStorage.getItem('accessToken');
-    const res = await fetch(`${BASE_URL}/course`, {
+    const res = await fetch(`${BASE_URL}/course/`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -126,7 +126,7 @@ export const createCourse = async ({ id, name, teacher_id }) => {
 export const getCourse = async () => {
   try {
     const accessToken = localStorage.getItem('accessToken');
-    const res = await fetch(`${BASE_URL}/course`, {
+    const res = await fetch(`${BASE_URL}/course/`, {
       method: "GET",
       headers: {
         'Accept': 'application/json',
